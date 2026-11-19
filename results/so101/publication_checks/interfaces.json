@@ -1,0 +1,46 @@
+[
+  {
+    "entrypoint": "train",
+    "help_exit_code": 0
+  },
+  {
+    "entrypoint": "record",
+    "help_exit_code": 0
+  },
+  {
+    "entrypoint": "replay",
+    "help_exit_code": 0
+  },
+  {
+    "entrypoint": "calibrate",
+    "help_exit_code": 0
+  },
+  {
+    "entrypoint": "teleoperate",
+    "help_exit_code": 0
+  },
+  {
+    "entrypoint": "setup_motors",
+    "help_exit_code": 0
+  },
+  {
+    "entrypoint": "find_cameras",
+    "help_exit_code": 0
+  },
+  {
+    "config": "act",
+    "parsed": true,
+    "policy": "act",
+    "steps": 50000
+  },
+  {
+    "config": "smolvla",
+    "parsed": true,
+    "policy": "smolvla",
+    "steps": 50000
+  },
+  {
+    "entrypoint": "find_port",
+    "inspection": "interactive unplug/replug script; no --help parser; full hardware interaction not performed"
+  }
+]

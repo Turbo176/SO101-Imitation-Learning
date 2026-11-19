@@ -1,0 +1,134 @@
+[
+  {
+    "source": "outputs/smolvla_deployment/check_model.py",
+    "mtime_local": "2026-10-07T19:37:00",
+    "bytes": 9972,
+    "sha256": "059a20e01415e820223b1f9f0966906337cc6edc0b4eeba12202b829f059cc1e"
+  },
+  {
+    "source": "outputs/smolvla_deployment/check_result.json",
+    "mtime_local": "2026-10-07T20:05:14",
+    "bytes": 3469,
+    "sha256": "3afa450dee8b15df114aade4ba7f340fe4103acf53cb7c119e5e7344a22701e6"
+  },
+  {
+    "source": "outputs/smolvla_deployment/check_result_050000_episode1.json",
+    "mtime_local": "2026-10-07T20:30:54",
+    "bytes": 3475,
+    "sha256": "4c0ff6b37a911f8f4a1fcc5f6f66ef927b152fbe53573b719dc6d987b380e5c9"
+  },
+  {
+    "source": "outputs/smolvla_deployment/check_result_050000_episode25.json",
+    "mtime_local": "2026-10-07T20:33:18",
+    "bytes": 3453,
+    "sha256": "e4e538e4c860154d8bdf6efc41086ca0e28dbae929fc52889a17c777787db275"
+  },
+  {
+    "source": "outputs/smolvla_deployment/check_result_cpu.json",
+    "mtime_local": "2026-10-07T19:38:26",
+    "bytes": 3096,
+    "sha256": "022af2bb4c26dac6b4d69fc2ed76d9343b1626ccbf71a7a6a6fe86434e8ab720"
+  },
+  {
+    "source": "outputs/smolvla_deployment/check_result_cpu_episode25.json",
+    "mtime_local": "2026-10-07T19:42:24",
+    "bytes": 3127,
+    "sha256": "7d15ebbb8f92d2e6fb42a0fcbf05c9dc7b0dbd2caffceab65cea4c2e0731dac2"
+  },
+  {
+    "source": "outputs/smolvla_deployment/check_result_gpu_episode25.json",
+    "mtime_local": "2026-10-07T20:07:28",
+    "bytes": 3451,
+    "sha256": "2f6d17b13202794d4049c03e0a349c28401be07edc9060987c98c9a9f4cf377e"
+  },
+  {
+    "source": "outputs/smolvla_deployment/download_cuda_wheel.py",
+    "mtime_local": "2026-10-07T19:51:04",
+    "bytes": 3508,
+    "sha256": "9d56065664df88f0ca9d47b2be64a9f37d91099e28cfc34b5316670ac9aa8e49"
+  },
+  {
+    "source": "outputs/smolvla_deployment/inference_constraints.txt",
+    "mtime_local": "2026-10-07T19:37:00",
+    "bytes": 239,
+    "sha256": "2576bcf245d71788f8215715933babcc6bb46bfd609ec0452d1906d1ad9cb6db"
+  },
+  {
+    "source": "outputs/smolvla_deployment/README.md",
+    "mtime_local": "2026-10-10T14:44:32",
+    "bytes": 10467,
+    "sha256": "668118ac1f2f4509643b4e66bac4a04fa1260ee97ea3d6a919cc54a1bc9f0c15"
+  },
+  {
+    "source": "outputs/smolvla_deployment/run_offline_050000.json",
+    "mtime_local": "2026-10-10T14:40:32",
+    "bytes": 973,
+    "sha256": "d4c7e450dd9f277fc9ef54b66b4d1f60b9e1e0a7795eddd1b9e79132e157aa5a"
+  },
+  {
+    "source": "outputs/smolvla_deployment/run_offline_050000_cpu.json",
+    "mtime_local": "2026-10-10T14:42:40",
+    "bytes": 973,
+    "sha256": "02e31f51b239021e8c90613225ff9479e849b406e9fd20ccdb3eeb58238f4c2d"
+  },
+  {
+    "source": "outputs/smolvla_deployment/run_policy.py",
+    "mtime_local": "2026-10-10T14:44:08",
+    "bytes": 17046,
+    "sha256": "dc9d8e1c70ab6d9d88354b18b76eab0ddb6bbe7d7b8f60735acb03050b2affa9"
+  },
+  {
+    "source": "outputs/act_smolvla_scientific_palette_20261011/source_records/act_training_metrics.csv",
+    "mtime_local": "2026-10-12T15:08:12",
+    "bytes": 19136,
+    "sha256": "fb27ac130bdfd7f57ba688619cdac3da2c51085647133494babed0d836960edf"
+  },
+  {
+    "source": "outputs/act_smolvla_scientific_palette_20261011/source_records/checkpoint_metrics.csv",
+    "mtime_local": "2026-10-12T15:08:12",
+    "bytes": 1814,
+    "sha256": "b954960cf04d57371194b66e92c737c13a732063cbb96b80c0b11044eada2aee"
+  },
+  {
+    "source": "outputs/act_smolvla_scientific_palette_20261011/source_records/checkpoint_metrics.json",
+    "mtime_local": "2026-10-12T15:08:12",
+    "bytes": 28653,
+    "sha256": "12629ef907383f9acd7e73f084b06577d4d077f9764d787eb1bdac6e7b8ee71e"
+  },
+  {
+    "source": "outputs/act_smolvla_scientific_palette_20261011/source_records/checkpoint_predictions.npz",
+    "mtime_local": "2026-10-12T15:08:12",
+    "bytes": 175636,
+    "sha256": "7c2590520a53434580503c5b2fe14ff6cfa26d8a03d9c094853c036eb1c0ad5a"
+  },
+  {
+    "source": "outputs/act_smolvla_scientific_palette_20261011/source_records/comparison_summary.json",
+    "mtime_local": "2026-10-12T15:08:12",
+    "bytes": 3827,
+    "sha256": "93a11e8b92b75009a906f1adf31a04a48b890de94015b6ebf564af54258e89b6"
+  },
+  {
+    "source": "outputs/act_smolvla_scientific_palette_20261011/source_records/evaluate_checkpoints.py",
+    "mtime_local": "2026-10-12T15:08:12",
+    "bytes": 6450,
+    "sha256": "a45547cda09a4a3c53bb48eaaa43486fe1d338e1a6faa0913540272207c1f58f"
+  },
+  {
+    "source": "outputs/act_smolvla_scientific_palette_20261011/source_records/metrics.py",
+    "mtime_local": "2026-10-12T15:08:12",
+    "bytes": 2909,
+    "sha256": "1879b2dd720fd29cc88d28588c277b10b53182d5f264a0e30ffd5492a7c0681e"
+  },
+  {
+    "source": "outputs/act_smolvla_scientific_palette_20261011/source_records/smolvla_metrics_200step.csv",
+    "mtime_local": "2026-10-12T15:08:12",
+    "bytes": 47750,
+    "sha256": "e9792d13e222253650923aa3d0a634947d8b16708ce0d9ba8b5b188984b853c1"
+  },
+  {
+    "source": "outputs/act_smolvla_scientific_palette_20261011/source_records/training_metrics.csv",
+    "mtime_local": "2026-10-12T15:08:12",
+    "bytes": 95523,
+    "sha256": "ce0d5ed87cb98a22299bc51c75340c7c9ddd0889d9bdf6bdf8e0d907bda6bef2"
+  }
+]

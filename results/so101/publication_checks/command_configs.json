@@ -1,0 +1,30 @@
+[
+  {
+    "command": "record",
+    "config_parse": true
+  },
+  {
+    "command": "replay",
+    "config_parse": true
+  },
+  {
+    "command": "calibrate_follower",
+    "config_parse": true
+  },
+  {
+    "command": "calibrate_leader",
+    "config_parse": true
+  },
+  {
+    "command": "teleoperate",
+    "config_parse": true
+  },
+  {
+    "command": "motor_setup_follower",
+    "config_parse": true
+  },
+  {
+    "command": "motor_setup_leader",
+    "config_parse": true
+  }
+]

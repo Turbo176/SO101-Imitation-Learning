@@ -1,0 +1,66 @@
+[
+  {
+    "document": "README.md",
+    "policy": "act",
+    "resume": false,
+    "configuration_parsed_and_validated": true,
+    "checkpoint_relationship_checked": false,
+    "note": "Fresh-run configuration only; no backbone download or training executed."
+  },
+  {
+    "document": "README.md",
+    "policy": "smolvla",
+    "resume": false,
+    "configuration_parsed_and_validated": true,
+    "checkpoint_relationship_checked": false,
+    "note": "Fresh-run configuration only; no backbone download or training executed."
+  },
+  {
+    "document": "README.md",
+    "policy": "act",
+    "resume": false,
+    "configuration_parsed_and_validated": true,
+    "checkpoint_relationship_checked": false,
+    "note": "Fresh-run configuration only; no backbone download or training executed."
+  },
+  {
+    "document": "docs/so101/remote-training.md",
+    "policy": "act",
+    "resume": false,
+    "configuration_parsed_and_validated": true,
+    "checkpoint_relationship_checked": false,
+    "note": "Fresh-run configuration only; no backbone download or training executed."
+  },
+  {
+    "document": "docs/so101/remote-training.md",
+    "policy": "smolvla",
+    "resume": false,
+    "configuration_parsed_and_validated": true,
+    "checkpoint_relationship_checked": false,
+    "note": "Fresh-run configuration only; no backbone download or training executed."
+  },
+  {
+    "document": "docs/so101/remote-training.md",
+    "policy": "act",
+    "resume": false,
+    "configuration_parsed_and_validated": true,
+    "checkpoint_relationship_checked": false,
+    "note": "Fresh-run configuration only; no backbone download or training executed."
+  },
+  {
+    "document": "docs/so101/remote-training.md",
+    "policy": "act",
+    "resume": true,
+    "configuration_parsed_and_validated": true,
+    "checkpoint_relationship_checked": true,
+    "note": "Resume paths mapped to the retained actual 50k checkpoint; no training or optimizer updates executed."
+  },
+  {
+    "document": "docs/so101/remote-training.md",
+    "policy": "smolvla",
+    "resume": true,
+    "configuration_parsed_and_validated": true,
+    "checkpoint_relationship_checked": true,
+    "note": "Resume paths mapped to the retained actual 50k checkpoint; no training or optimizer updates executed."
+  }
+]

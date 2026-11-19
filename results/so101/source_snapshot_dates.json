@@ -1,0 +1,122 @@
+[
+  {
+    "path": "docs/source/cameras.mdx",
+    "mtime_local": "2026-09-21T14:56:24",
+    "sha256": "f525d2ce6444af5731da3834a9946d1280fe2a95c8c6b94cd81e9b2ae91085df"
+  },
+  {
+    "path": "src/lerobot/calibrate.py",
+    "mtime_local": "2026-07-14T14:29:40",
+    "sha256": "1b581387b494618db41fcd5410eb7eba882d9b9595ec4d2de7974d17c0d39c10"
+  },
+  {
+    "path": "src/lerobot/cameras/opencv/camera_opencv.py",
+    "mtime_local": "2026-09-21T14:54:38",
+    "sha256": "b9db209da88b76abcc0f1189dbeea9fc0c7363efd6d32ef1ba7716a5141ca54c"
+  },
+  {
+    "path": "src/lerobot/cameras/opencv/configuration_opencv.py",
+    "mtime_local": "2026-09-21T14:54:38",
+    "sha256": "c3e8735ed5a2e24e6096a230df38b2ec6fc26ffb2d188748de960be949231a98"
+  },
+  {
+    "path": "src/lerobot/cameras/utils.py",
+    "mtime_local": "2026-09-21T14:54:38",
+    "sha256": "7c012d6da19db1e4bd12a80b26e98957b885efa6b74ad9f769412f580b3d14de"
+  },
+  {
+    "path": "src/lerobot/configs/policies.py",
+    "mtime_local": "2025-09-02T15:03:06",
+    "sha256": "69b134c920c476d545fd34df71676c5ac45b094c39cacfcbd933e6b6421c51fd"
+  },
+  {
+    "path": "src/lerobot/motors/feetech/feetech.py",
+    "mtime_local": "2026-09-21T19:12:54",
+    "sha256": "e83e33219875149311d35519e51e8f4b364b7da02bdfb3588b44e8a8f8e2417e"
+  },
+  {
+    "path": "src/lerobot/motors/motors_bus.py",
+    "mtime_local": "2026-09-21T19:12:54",
+    "sha256": "72efe026729ee81ee9311105689631153029ed6e22e58d709c219ce0d378c609"
+  },
+  {
+    "path": "src/lerobot/record.py",
+    "mtime_local": "2026-09-28T15:43:36",
+    "sha256": "fe5eee53fb93e28c96a5a64236d9336d90cc3f81029001d7084deaed1fc57054"
+  },
+  {
+    "path": "src/lerobot/replay.py",
+    "mtime_local": "2026-07-14T14:29:40",
+    "sha256": "a83559c005c8f18e60c8e88bbecec58b852db5e012bfee1e2bf68b6bbb464fed"
+  },
+  {
+    "path": "src/lerobot/robots/so101_follower/config_so101_follower.py",
+    "mtime_local": "2026-09-29T17:00:56",
+    "sha256": "fe4b564c0973d8eb4e9f88d6d676c2acd04609cce762352a7ac8b81e80d58b29"
+  },
+  {
+    "path": "src/lerobot/robots/so101_follower/so101_follower.py",
+    "mtime_local": "2026-09-21T19:12:54",
+    "sha256": "db6b64ae15eda62d631736348db2c9e5e08db4ddb129ed75fca6750eed930073"
+  },
+  {
+    "path": "src/lerobot/robots/utils.py",
+    "mtime_local": "2026-09-21T19:12:54",
+    "sha256": "f0293233d5338255c91c73e8c3a8a596f05435f64d7990e532aea46ae6c6fbb3"
+  },
+  {
+    "path": "src/lerobot/teleoperate.py",
+    "mtime_local": "2026-07-14T14:29:40",
+    "sha256": "018a04f7cc708da29c2bc180367bf05a1b4d9dd9f0c17df92df415f1c0d63856"
+  },
+  {
+    "path": "src/lerobot/teleoperators/so101_leader/config_so101_leader.py",
+    "mtime_local": "2026-09-21T19:12:54",
+    "sha256": "1855d5b5b4c89323d32c819cec6e89c8f4ee15b510472f6d74fb8f7ad614e940"
+  },
+  {
+    "path": "src/lerobot/teleoperators/so101_leader/so101_leader.py",
+    "mtime_local": "2026-09-21T19:12:54",
+    "sha256": "4b88022f40c1b1ae9847f921ef4af32986684feb9786ca0f7bf990972bb55ad1"
+  },
+  {
+    "path": "src/lerobot/teleoperators/utils.py",
+    "mtime_local": "2026-07-14T14:29:40",
+    "sha256": "fa6fa6acedcf805b3a65ccaa7facc4de5a76de017a5457754651e09f28b9665c"
+  },
+  {
+    "path": "tests/cameras/test_opencv.py",
+    "mtime_local": "2026-09-21T14:56:24",
+    "sha256": "41b35b412c9ab3f51ad0784ad259f2735783a988d24c35da0ae5179d50b715c0"
+  },
+  {
+    "path": "src/lerobot/robots/bi_so101_follower/bi_so101_follower.py",
+    "mtime_local": "2026-07-14T14:29:40",
+    "sha256": "cc81c11db423bf9429cec585f9a7de1069b7821dd9e88811ba7fbaba9995393c"
+  },
+  {
+    "path": "src/lerobot/robots/bi_so101_follower/config_bi_so101_follower.py",
+    "mtime_local": "2026-01-25T20:42:54",
+    "sha256": "81e9a1b314aa5c6d6a1358078485420b185750160c81dc36043f0e01c7e46872"
+  },
+  {
+    "path": "src/lerobot/robots/bi_so101_follower/__init__.py",
+    "mtime_local": "2026-01-25T20:42:54",
+    "sha256": "f737856f69a73481d566bf892a08f1da6e2ff661626008298a714ee544d52ea0"
+  },
+  {
+    "path": "src/lerobot/teleoperators/bi_so101_leader/bi_so101_leader.py",
+    "mtime_local": "2026-07-14T14:29:40",
+    "sha256": "811b733cc3963d285a5ba9fedc1bfa54ab70c9348bca925363e67e969632bfbd"
+  },
+  {
+    "path": "src/lerobot/teleoperators/bi_so101_leader/config_bi_so101_leader.py",
+    "mtime_local": "2026-01-25T20:42:54",
+    "sha256": "d77b3001ebafb82ee818518e692015af9d6e01618b7985b0f645d5acadde8e17"
+  },
+  {
+    "path": "src/lerobot/teleoperators/bi_so101_leader/__init__.py",
+    "mtime_local": "2026-01-25T20:42:54",
+    "sha256": "ab67f4f297c87e029b3b9b752f262ef2510daf3104f87126d437428bc0b1f56e"
+  }
+]

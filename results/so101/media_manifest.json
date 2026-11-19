@@ -1,0 +1,667 @@
+[
+  {
+    "asset": "media/so101/deployment-trial06.mp4",
+    "sha256": "2f7f2df5d9332c55ade47fc1cb9d284a04e25f8b2e37bc7adda55c4089063270",
+    "bytes": 2065246,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "d0aba39da6dd0bbcf93c384285f94d371c993071e326dcabf7f5eadf95c5a942",
+        "mtime_local": "2026-09-29T17:52:20",
+        "decoded_frames": 563,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 18.766666666666666
+      }
+    ],
+    "transformations": "Native 640x480 H.264 transcode; entire source interval, no crop.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "ffmpeg_output_arguments": [
+      "-c:v",
+      "libx264",
+      "-crf",
+      "18",
+      "-preset",
+      "medium",
+      "-pix_fmt",
+      "yuv420p",
+      "-movflags",
+      "+faststart",
+      "-an"
+    ],
+    "decoded_frames": 563,
+    "fps": "30",
+    "width": 640,
+    "height": 480,
+    "duration_seconds": 18.766666666666666
+  },
+  {
+    "asset": "media/so101/deployment-trial06-display-1280.mp4",
+    "sha256": "646a80f1e4351dfec9c21993df383bc4b5aaa79b6e0172609dfe0a2c9099660f",
+    "bytes": 6700886,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "d0aba39da6dd0bbcf93c384285f94d371c993071e326dcabf7f5eadf95c5a942",
+        "mtime_local": "2026-09-29T17:52:20",
+        "decoded_frames": 563,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 18.766666666666666
+      }
+    ],
+    "transformations": "Lanczos upscale to 1280x960 with mild unsharp; no recovered source detail.",
+    "control_label": "Same deployment recording",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "ffmpeg_output_arguments": [
+      "-vf",
+      "scale=1280:960:flags=lanczos,unsharp=5:5:0.35:5:5:0",
+      "-c:v",
+      "libx264",
+      "-crf",
+      "18",
+      "-preset",
+      "medium",
+      "-pix_fmt",
+      "yuv420p",
+      "-movflags",
+      "+faststart",
+      "-an"
+    ],
+    "decoded_frames": 563,
+    "fps": "30",
+    "width": 1280,
+    "height": 960,
+    "duration_seconds": 18.766666666666666
+  },
+  {
+    "asset": "media/so101/deployment-trial06.gif",
+    "sha256": "caf2493586afbc8e1365007962fd63b251a7966b85b26a2f06eb98dc391cb7b4",
+    "bytes": 8031957,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "d0aba39da6dd0bbcf93c384285f94d371c993071e326dcabf7f5eadf95c5a942",
+        "mtime_local": "2026-09-29T17:52:20",
+        "decoded_frames": 563,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 18.766666666666666
+      }
+    ],
+    "transformations": "10 FPS, 480x360 GIF preview, entire source field of view and interval; 1x playback.",
+    "control_label": "Same deployment recording",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "ffmpeg_output_arguments": [
+      "-filter_complex",
+      "[0:v]fps=10,scale=480:360:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4",
+      "-loop",
+      "0"
+    ],
+    "decoded_frames": 188,
+    "fps": "10",
+    "width": 480,
+    "height": 360,
+    "duration_seconds": 18.8
+  },
+  {
+    "asset": "media/so101/deployment-trial06-two-view.mp4",
+    "sha256": "7bf2a2fbb9330582ba89b0797f7d4386e900b929b9355d0c30a13bcff1f60b65",
+    "bytes": 3880158,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "d0aba39da6dd0bbcf93c384285f94d371c993071e326dcabf7f5eadf95c5a942",
+        "mtime_local": "2026-09-29T17:52:20",
+        "decoded_frames": 563,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 18.766666666666666
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+        "sha256": "3e8e572c1b8082fec32ea2464c4aa09b179d7779f8f58a966445037d168ae5bd",
+        "mtime_local": "2026-09-29T17:52:28",
+        "decoded_frames": 426,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 14.2
+      }
+    ],
+    "transformations": "Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval. Final 137 missing handeye frames shown as an explicit text card, never frozen or generated camera footage.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "missing_handeye_frames": 137,
+    "encoding": {
+      "codec": "libx264",
+      "crf": 19,
+      "fps": 30
+    },
+    "decoded_frames": 563,
+    "fps": "30",
+    "width": 1280,
+    "height": 600,
+    "duration_seconds": 18.766666666666666
+  },
+  {
+    "asset": "media/so101/deployment-trial06-two-view.gif",
+    "sha256": "60572596e50973e505f81889e56ac9dbc25f25eabc20fc9f20523c25c7601a2f",
+    "bytes": 9036100,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "d0aba39da6dd0bbcf93c384285f94d371c993071e326dcabf7f5eadf95c5a942",
+        "mtime_local": "2026-09-29T17:52:20",
+        "decoded_frames": 563,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 18.766666666666666
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+        "sha256": "3e8e572c1b8082fec32ea2464c4aa09b179d7779f8f58a966445037d168ae5bd",
+        "mtime_local": "2026-09-29T17:52:28",
+        "decoded_frames": 426,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 14.2
+      }
+    ],
+    "transformations": "768x360 / 10 FPS preview of the labeled full-interval two-view MP4; 1x. Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval. Final 137 missing handeye frames shown as an explicit text card, never frozen or generated camera footage.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "missing_handeye_frames": 137,
+    "ffmpeg_output_arguments": [
+      "-filter_complex",
+      "[0:v]fps=10,scale=768:360:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4",
+      "-loop",
+      "0"
+    ],
+    "decoded_frames": 188,
+    "fps": "10",
+    "width": 768,
+    "height": 360,
+    "duration_seconds": 18.8
+  },
+  {
+    "asset": "media/so101/deployment-trial04-two-view.mp4",
+    "sha256": "eb8950b5bceed53a938db0496a2e2a3648cfe76eec4ac0b3244f719c179c459a",
+    "bytes": 3096442,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "f0c77b2ab148bf8910ceb898f558517c8527db31e46067ea8216aebc6d3f852e",
+        "mtime_local": "2026-09-29T17:38:48",
+        "decoded_frames": 379,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.633333333333333
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+        "sha256": "15734e1ddb5ab15712fe7eb8d36e4ae16d6c2f682f73f2ea5a1e36f4484fb1e0",
+        "mtime_local": "2026-09-29T17:38:52",
+        "decoded_frames": 379,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.633333333333333
+      }
+    ],
+    "transformations": "Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified; human cable handling and reset retained",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "missing_handeye_frames": 0,
+    "encoding": {
+      "codec": "libx264",
+      "crf": 19,
+      "fps": 30
+    },
+    "decoded_frames": 379,
+    "fps": "30",
+    "width": 1280,
+    "height": 600,
+    "duration_seconds": 12.633333333333333
+  },
+  {
+    "asset": "media/so101/deployment-trial04-two-view.gif",
+    "sha256": "3d14a345dbd996598e48d876e2763035d2646eeb8f071e1220387777e9055a11",
+    "bytes": 7113640,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "f0c77b2ab148bf8910ceb898f558517c8527db31e46067ea8216aebc6d3f852e",
+        "mtime_local": "2026-09-29T17:38:48",
+        "decoded_frames": 379,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.633333333333333
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+        "sha256": "15734e1ddb5ab15712fe7eb8d36e4ae16d6c2f682f73f2ea5a1e36f4484fb1e0",
+        "mtime_local": "2026-09-29T17:38:52",
+        "decoded_frames": 379,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.633333333333333
+      }
+    ],
+    "transformations": "768x360 / 10 FPS preview of the labeled full-interval two-view MP4; 1x. Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified; human cable handling and reset retained",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "missing_handeye_frames": 0,
+    "ffmpeg_output_arguments": [
+      "-filter_complex",
+      "[0:v]fps=10,scale=768:360:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4",
+      "-loop",
+      "0"
+    ],
+    "decoded_frames": 126,
+    "fps": "10",
+    "width": 768,
+    "height": 360,
+    "duration_seconds": 12.6
+  },
+  {
+    "asset": "media/so101/teleoperation-episode54.mp4",
+    "sha256": "2f7bd3997014e9ef823608487fd1ee2aa3c28bdeb05498fe092ff717bab426f4",
+    "bytes": 2771686,
+    "sources": [
+      {
+        "dataset_relative_path": "medicine_box_black_5_20s_v1/videos/chunk-000/observation.images.fixed/episode_000054.mp4",
+        "sha256": "382f3ef20404e3f71140c25115b61c1742bc564005604c069bb99fbcc22a2956",
+        "mtime_local": "2026-09-28T17:27:38",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      },
+      {
+        "dataset_relative_path": "medicine_box_black_5_20s_v1/videos/chunk-000/observation.images.handeye/episode_000054.mp4",
+        "sha256": "2071a75e378db49b019ccdd476f9c17b872b2cc3ebd3994e64b802788b0606fc",
+        "mtime_local": "2026-09-28T17:27:44",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      }
+    ],
+    "transformations": "Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
+    "control_label": "Human teleoperation demonstration; training set",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": null,
+    "missing_handeye_frames": 0,
+    "encoding": {
+      "codec": "libx264",
+      "crf": 19,
+      "fps": 30
+    },
+    "decoded_frames": 367,
+    "fps": "30",
+    "width": 1280,
+    "height": 600,
+    "duration_seconds": 12.233333333333333
+  },
+  {
+    "asset": "media/so101/teleoperation-episode54.gif",
+    "sha256": "f7d2fa8eab10f03d1103327afbb1f88acf5d460e9a0a5d00b3270886f2010afe",
+    "bytes": 5780118,
+    "sources": [
+      {
+        "dataset_relative_path": "medicine_box_black_5_20s_v1/videos/chunk-000/observation.images.fixed/episode_000054.mp4",
+        "sha256": "382f3ef20404e3f71140c25115b61c1742bc564005604c069bb99fbcc22a2956",
+        "mtime_local": "2026-09-28T17:27:38",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      },
+      {
+        "dataset_relative_path": "medicine_box_black_5_20s_v1/videos/chunk-000/observation.images.handeye/episode_000054.mp4",
+        "sha256": "2071a75e378db49b019ccdd476f9c17b872b2cc3ebd3994e64b802788b0606fc",
+        "mtime_local": "2026-09-28T17:27:44",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      }
+    ],
+    "transformations": "768x360 / 10 FPS preview of the labeled full-interval two-view MP4; 1x. Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
+    "control_label": "Human teleoperation demonstration; training set",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": null,
+    "missing_handeye_frames": 0,
+    "ffmpeg_output_arguments": [
+      "-filter_complex",
+      "[0:v]fps=10,scale=768:360:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4",
+      "-loop",
+      "0"
+    ],
+    "decoded_frames": 122,
+    "fps": "10",
+    "width": 768,
+    "height": 360,
+    "duration_seconds": 12.2
+  },
+  {
+    "asset": "media/so101/deployment-trial03-two-view.mp4",
+    "sha256": "aff751a64264089966048534ed7103e294d06230248c18f4957f4221aa76b57c",
+    "bytes": 2955657,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "5babc6c96f0df36a9371fad5916242d8af2601c6a62ea8c30b250d30ca918dcd",
+        "mtime_local": "2026-09-29T17:36:48",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+        "sha256": "584caf88201c221ee76eb48504fa22b434ac2dd4ca509ebc01639341465ed169",
+        "mtime_local": "2026-09-29T17:36:52",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      }
+    ],
+    "transformations": "Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified; failure observation, human hand at end",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "missing_handeye_frames": 0,
+    "encoding": {
+      "codec": "libx264",
+      "crf": 19,
+      "fps": 30
+    },
+    "decoded_frames": 367,
+    "fps": "30",
+    "width": 1280,
+    "height": 600,
+    "duration_seconds": 12.233333333333333
+  },
+  {
+    "asset": "media/so101/deployment-trial03-two-view.gif",
+    "sha256": "24ad39052b62fa2fba73e7b2af45b09b0187bf616fc2423fb27534ad6e9faf66",
+    "bytes": 6953430,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "5babc6c96f0df36a9371fad5916242d8af2601c6a62ea8c30b250d30ca918dcd",
+        "mtime_local": "2026-09-29T17:36:48",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+        "sha256": "584caf88201c221ee76eb48504fa22b434ac2dd4ca509ebc01639341465ed169",
+        "mtime_local": "2026-09-29T17:36:52",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      }
+    ],
+    "transformations": "768x360 / 10 FPS preview of the labeled full-interval two-view MP4; 1x. Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified; failure observation, human hand at end",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "missing_handeye_frames": 0,
+    "ffmpeg_output_arguments": [
+      "-filter_complex",
+      "[0:v]fps=10,scale=768:360:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4",
+      "-loop",
+      "0"
+    ],
+    "decoded_frames": 122,
+    "fps": "10",
+    "width": 768,
+    "height": 360,
+    "duration_seconds": 12.2
+  },
+  {
+    "asset": "media/so101/task-sequence.webp",
+    "sha256": "826ef0aa723ded656380e1592e32d169d6ed932a5a83b6d5c6cecadc76bdeed2",
+    "bytes": 46970,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "d0aba39da6dd0bbcf93c384285f94d371c993071e326dcabf7f5eadf95c5a942",
+        "mtime_local": "2026-09-29T17:52:20",
+        "decoded_frames": 563,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 18.766666666666666
+      }
+    ],
+    "transformations": "Four selected source frames resized for a storyboard; no retouching or synthesized views.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "playback_speed": 1,
+    "time_cuts": true,
+    "selected_source_frame_indices": [
+      241,
+      321,
+      401,
+      482
+    ]
+  },
+  {
+    "asset": "media/so101/camera-inputs.webp",
+    "sha256": "c947729f9aaa2a402ce9d261d6faaaf7b9c964476f8959d19953d40d9c19e19a",
+    "bytes": 63352,
+    "sources": [
+      {
+        "dataset_relative_path": "medicine_box_black_5_20s_v1/videos/chunk-000/observation.images.fixed/episode_000054.mp4",
+        "sha256": "382f3ef20404e3f71140c25115b61c1742bc564005604c069bb99fbcc22a2956",
+        "mtime_local": "2026-09-28T17:27:38",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      },
+      {
+        "dataset_relative_path": "medicine_box_black_5_20s_v1/videos/chunk-000/observation.images.handeye/episode_000054.mp4",
+        "sha256": "2071a75e378db49b019ccdd476f9c17b872b2cc3ebd3994e64b802788b0606fc",
+        "mtime_local": "2026-09-28T17:27:44",
+        "decoded_frames": 367,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 12.233333333333333
+      }
+    ],
+    "transformations": "One real frame per camera, matched by episode and frame index; labels outside images.",
+    "control_label": "Human teleoperation demonstration; training set",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "selected_source_frame_indices": [
+      210,
+      210
+    ]
+  },
+  {
+    "asset": "media/so101/deployment-trial06-telemetry.mp4",
+    "sha256": "4246f5f2b567e18e2be8e776b8e6e974106d18b0ecf41b2927fef84dc1eb0c00",
+    "bytes": 3416079,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/data/chunk-000/episode_000000.parquet",
+        "sha256": "0af5a96c6f1c102fc3ccca2463ac6fe5490daa67134e8d21aec66cf738104420",
+        "bytes": 41088,
+        "mtime_local": "2026-09-29T17:52:10"
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/meta/info.json",
+        "sha256": "a93c61a633966f0a705bac5e22cf00e0e4f45b6336ccc6630fd3ab5bc08d146a",
+        "bytes": 2611,
+        "mtime_local": "2026-09-29T17:51:34"
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "d0aba39da6dd0bbcf93c384285f94d371c993071e326dcabf7f5eadf95c5a942",
+        "decoded_frames": 563,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 18.766666666666666
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+        "sha256": "3e8e572c1b8082fec32ea2464c4aa09b179d7779f8f58a966445037d168ae5bd",
+        "decoded_frames": 426,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 14.2
+      }
+    ],
+    "transformations": "Synchronized real camera playback and six measured/sent-position histories; no future trace revealed. Entire recorded interval; missing wrist interval replaced by an explicit card.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "Unverified; 050000 in directory name, no controller or checkpoint hash.",
+    "telemetry": "results/so101/telemetry/trial06.csv",
+    "alignment": {
+      "rows": 563,
+      "fps": 30,
+      "consecutive_frame_indices": true,
+      "timestamp_grid_max_error_seconds": 8.900960288826809e-07,
+      "cameras": {
+        "fixed": {
+          "decoded_frames": 563,
+          "first_pts_seconds": 0.0,
+          "last_pts_seconds": 18.733333333333334,
+          "max_timestamp_difference_seconds": 8.900960288826809e-07
+        },
+        "handeye": {
+          "decoded_frames": 426,
+          "first_pts_seconds": 0.0,
+          "last_pts_seconds": 14.166666666666666,
+          "max_timestamp_difference_seconds": 4.4504801444134046e-07
+        }
+      },
+      "hardware_exposure_synchronization_measured": false
+    },
+    "missing_handeye_frames": 137,
+    "decoded_frames": 563,
+    "fps": "30",
+    "width": 1440,
+    "height": 936,
+    "duration_seconds": 18.766666666666666
+  },
+  {
+    "asset": "media/so101/deployment-trial06-telemetry.gif",
+    "sha256": "1789742fe9d653d3afaac2b239bd31f7ee61e3e715f25197d8310272fdc11829",
+    "bytes": 7982941,
+    "sources": [
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/data/chunk-000/episode_000000.parquet",
+        "sha256": "0af5a96c6f1c102fc3ccca2463ac6fe5490daa67134e8d21aec66cf738104420",
+        "bytes": 41088,
+        "mtime_local": "2026-09-29T17:52:10"
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/meta/info.json",
+        "sha256": "a93c61a633966f0a705bac5e22cf00e0e4f45b6336ccc6630fd3ab5bc08d146a",
+        "bytes": 2611,
+        "mtime_local": "2026-09-29T17:51:34"
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+        "sha256": "d0aba39da6dd0bbcf93c384285f94d371c993071e326dcabf7f5eadf95c5a942",
+        "decoded_frames": 563,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 18.766666666666666
+      },
+      {
+        "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+        "sha256": "3e8e572c1b8082fec32ea2464c4aa09b179d7779f8f58a966445037d168ae5bd",
+        "decoded_frames": 426,
+        "fps": "30",
+        "width": 640,
+        "height": 480,
+        "duration_seconds": 14.2
+      }
+    ],
+    "transformations": "Synchronized real camera playback and six measured/sent-position histories; no future trace revealed. Entire recorded interval; missing wrist interval replaced by an explicit card.",
+    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "playback_speed": 1,
+    "time_cuts": false,
+    "checkpoint_identifier": "Unverified; 050000 in directory name, no controller or checkpoint hash.",
+    "telemetry": "results/so101/telemetry/trial06.csv",
+    "alignment": {
+      "rows": 563,
+      "fps": 30,
+      "consecutive_frame_indices": true,
+      "timestamp_grid_max_error_seconds": 8.900960288826809e-07,
+      "cameras": {
+        "fixed": {
+          "decoded_frames": 563,
+          "first_pts_seconds": 0.0,
+          "last_pts_seconds": 18.733333333333334,
+          "max_timestamp_difference_seconds": 8.900960288826809e-07
+        },
+        "handeye": {
+          "decoded_frames": 426,
+          "first_pts_seconds": 0.0,
+          "last_pts_seconds": 14.166666666666666,
+          "max_timestamp_difference_seconds": 4.4504801444134046e-07
+        }
+      },
+      "hardware_exposure_synchronization_measured": false
+    },
+    "missing_handeye_frames": 137,
+    "decoded_frames": 188,
+    "fps": "10",
+    "width": 960,
+    "height": 624,
+    "duration_seconds": 18.8
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "strict_weights_load": true,
+  "policy": "ACT",
+  "step": 50000,
+  "action_chunk_shape": [
+    1,
+    100,
+    6
+  ],
+  "select_action_shape": [
+    1,
+    6
+  ],
+  "all_actions_finite": true,
+  "robot_connected": false,
+  "input_episode": 25,
+  "input_frame": 60,
+  "torch": "2.7.1+cu128"
+}

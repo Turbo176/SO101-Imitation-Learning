@@ -1,0 +1,28 @@
+Loading weights from local directory
+ACT 10000: nMAE=0.184094, nRMSE=0.342166, R2=0.826254, Hit@0.1sigma=44.47%, vector=0.53%, calls=0.6s
+Loading weights from local directory
+ACT 20000: nMAE=0.100168, nRMSE=0.157388, R2=0.965027, Hit@0.1sigma=64.60%, vector=8.80%, calls=0.2s
+Loading weights from local directory
+ACT 30000: nMAE=0.093962, nRMSE=0.141785, R2=0.971343, Hit@0.1sigma=67.47%, vector=15.20%, calls=0.2s
+Loading weights from local directory
+ACT 40000: nMAE=0.090607, nRMSE=0.136700, R2=0.974546, Hit@0.1sigma=70.87%, vector=20.67%, calls=0.2s
+Loading weights from local directory
+ACT 50000: nMAE=0.078766, nRMSE=0.130205, R2=0.976416, Hit@0.1sigma=77.36%, vector=30.53%, calls=0.2s
+Reducing the number of VLM layers to 16 ...
+Loading weights from local directory
+SmolVLA 10000: nMAE=0.131982, nRMSE=0.191090, R2=0.944465, Hit@0.1sigma=51.58%, vector=2.93%, calls=3.1s
+Reducing the number of VLM layers to 16 ...
+Loading weights from local directory
+SmolVLA 20000: nMAE=0.117813, nRMSE=0.204208, R2=0.938623, Hit@0.1sigma=66.33%, vector=13.73%, calls=3.0s
+Reducing the number of VLM layers to 16 ...
+Loading weights from local directory
+SmolVLA 30000: nMAE=0.074713, nRMSE=0.119716, R2=0.980096, Hit@0.1sigma=78.31%, vector=32.27%, calls=2.9s
+Reducing the number of VLM layers to 16 ...
+Loading weights from local directory
+SmolVLA 40000: nMAE=0.071651, nRMSE=0.127726, R2=0.976328, Hit@0.1sigma=81.04%, vector=38.27%, calls=2.9s
+Reducing the number of VLM layers to 16 ...
+Loading weights from local directory
+SmolVLA 50000: nMAE=0.068874, nRMSE=0.125661, R2=0.977018, Hit@0.1sigma=82.58%, vector=40.53%, calls=2.8s
+50k prediction difference against original diagnostic act 0.0
+50k prediction difference against original diagnostic smolvla 0.0
+Complete: 10 saved checkpoints, 150 chunks; original models/data were read only.

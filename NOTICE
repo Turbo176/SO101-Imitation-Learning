@@ -1,0 +1,15 @@
+SO-101 Real-to-Real
+Copyright 2026 Turbo176 for project-specific additions and release documentation.
+
+This distribution contains a source snapshot derived from LeRobot:
+Copyright 2024-2025 The HuggingFace Inc. team and contributors.
+Upstream: https://github.com/huggingface/lerobot
+Base commit: 882c80d446a63a44868c67ae535467af32ce0e80 (LeRobot 0.3.4).
+LeRobot is distributed under the Apache License, Version 2.0, reproduced in LICENSE.
+Original copyright headers and attribution notices are retained.
+The upstream repository provides the original contributor history.
+
+Project-specific changes and reused experiment tools are described in
+docs/so101/provenance.md. ACT and SmolVLA model architectures are upstream work.
+Model weights and full datasets are not included in this source release.
+Downloaded model/processor assets retain the licenses of their source repositories.

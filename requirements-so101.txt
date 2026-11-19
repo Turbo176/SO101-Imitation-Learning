@@ -1,0 +1,10 @@
+# Compatible with this checkout's LeRobot 0.3.4 SmolVLA.
+torch==2.7.1
+torchvision==0.22.1
+transformers==4.51.3
+tokenizers==0.21.4
+huggingface-hub==0.34.4
+accelerate==1.7.0
+num2words==0.5.14
+safetensors==0.8.0
+diffusers==0.33.1

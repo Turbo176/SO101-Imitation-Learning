@@ -1,0 +1,44 @@
+{
+  "ok": true,
+  "task": "Pick up the green medicine box and place it in the black target area",
+  "model": "outputs/smolvla/050000/pretrained_model",
+  "assets": "assets/smolvlm",
+  "device": "cuda",
+  "precision": "float32",
+  "chunk_size": 50,
+  "n_action_steps": 50,
+  "input_features": [
+    "observation.images.fixed",
+    "observation.images.handeye",
+    "observation.state"
+  ],
+  "output_features": [
+    "action"
+  ],
+  "load_seconds": 51.206,
+  "checkpoint_training_step": 50000,
+  "mode": "offline",
+  "action_shape": [
+    50,
+    6
+  ],
+  "all_actions_finite": true,
+  "first_chunk_seconds": 2.706,
+  "warm_chunk_seconds": 0.703,
+  "action_min_per_joint": [
+    -10.502,
+    -43.361,
+    -8.799,
+    34.83,
+    23.658,
+    22.52
+  ],
+  "action_max_per_joint": [
+    2.62,
+    2.774,
+    43.382,
+    79.968,
+    30.0,
+    23.966
+  ]
+}

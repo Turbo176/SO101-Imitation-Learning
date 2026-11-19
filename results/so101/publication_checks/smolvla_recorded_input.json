@@ -1,0 +1,128 @@
+{
+  "ok": true,
+  "model": "outputs/smolvla/050000/pretrained_model",
+  "assets": "assets/smolvlm",
+  "device": "cuda",
+  "precision": "float32",
+  "robot_connected": false,
+  "packages": {
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "transformers": "4.51.3",
+    "tokenizers": "0.21.4",
+    "huggingface-hub": "0.34.4",
+    "accelerate": "1.7.0",
+    "safetensors": "0.8.0",
+    "lerobot": "0.3.4"
+  },
+  "checkpoint_training_step": 50000,
+  "gpu": {
+    "name": "NVIDIA GeForce GTX 1650 Ti",
+    "total_memory_mib": 4095.6875,
+    "compute_capability": [
+      7,
+      5
+    ],
+    "torch_cuda_version": "12.8",
+    "native_bf16_supported": false
+  },
+  "strict_weights_load": true,
+  "normalization_valid": true,
+  "normalization_buffers": {
+    "normalize_inputs.buffer_observation_state.mean": [
+      3.1828677654266357,
+      7.326008319854736,
+      -8.82455062866211,
+      76.20376586914062,
+      22.751211166381836,
+      23.87995147705078
+    ],
+    "normalize_inputs.buffer_observation_state.std": [
+      19.31588363647461,
+      23.87637710571289,
+      26.550399780273438,
+      28.505674362182617,
+      23.173728942871094,
+      11.052947044372559
+    ],
+    "normalize_targets.buffer_action.mean": [
+      3.1547045707702637,
+      5.087273120880127,
+      -10.715486526489258,
+      76.1048583984375,
+      22.854915618896484,
+      22.32781219482422
+    ],
+    "normalize_targets.buffer_action.std": [
+      19.28764533996582,
+      23.51525115966797,
+      26.980588912963867,
+      28.689119338989258,
+      23.15365219116211,
+      13.801904678344727
+    ],
+    "unnormalize_outputs.buffer_action.mean": [
+      3.1547045707702637,
+      5.087273120880127,
+      -10.715486526489258,
+      76.1048583984375,
+      22.854915618896484,
+      22.32781219482422
+    ],
+    "unnormalize_outputs.buffer_action.std": [
+      19.28764533996582,
+      23.51525115966797,
+      26.980588912963867,
+      28.689119338989258,
+      23.15365219116211,
+      13.801904678344727
+    ]
+  },
+  "input": {
+    "kind": "recorded",
+    "dataset": "../datasets/medicine_box_black_5_20s_v1",
+    "episode": 25,
+    "frame": 60,
+    "timestamp_s": 2.0,
+    "task": "Pick up the green medicine box and place it in the black target area"
+  },
+  "load_seconds": 49.46339420000004,
+  "parameter_dtypes": [
+    "torch.float32"
+  ],
+  "action_shape": [
+    50,
+    6
+  ],
+  "all_actions_finite": true,
+  "inference_seconds": [
+    5.161246199997549,
+    0.8042425000021467
+  ],
+  "warm_mean_chunk_seconds": 0.8042425000021467,
+  "action_min_per_joint": [
+    -14.668773651123047,
+    -21.091548919677734,
+    31.425519943237305,
+    66.17964172363281,
+    -1.133096694946289,
+    28.94548797607422
+  ],
+  "action_max_per_joint": [
+    -12.252317428588867,
+    -3.3386101722717285,
+    34.48320770263672,
+    79.82193756103516,
+    1.0200233459472656,
+    35.18415451049805
+  ],
+  "select_action_shape": [
+    1,
+    6
+  ],
+  "queued_actions_checked": 50,
+  "cuda_peak_allocated_mib": 1799.0673828125,
+  "cuda_peak_reserved_mib": 1842.0,
+  "checkpoint_sha256": "308c5f218c8dcdd2125459d010b59a390d4fe84cb08f91824a0fa86f7e7bcdba",
+  "scope": "Offline compatibility only; not physical grasp success or hardware safety."
+}

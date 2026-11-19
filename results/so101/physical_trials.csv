@@ -1,0 +1,8 @@
+source_directory,control_mode_verified,policy_type,checkpoint_sha256,adjudicated_success,total_attempts_verified,visible_observation,recording_completeness
+eval_medicine_box_black_050000_trial02,,,,,,truncated recording,incomplete/unfinalized
+eval_medicine_box_black_050000_trial03,,,,,,box tips; no placement; human hand at end,complete saved episode
+eval_medicine_box_black_050000_trial04,,,,,,grasp and placement visible; human reset,complete saved episode
+eval_medicine_box_black_050000_trial05,,,,,,no placement within clip; human/cable interaction,complete saved episode
+eval_medicine_box_black_050000_trial06,,,,,,grasp and placement visible in fixed view,incomplete/unfinalized
+eval_medicine_box_black_050000_trial07,,,,,,box tips; no placement within clip,incomplete/unfinalized
+eval_medicine_box_black_050000_trial08,,,,,,no saved episode,incomplete/unfinalized

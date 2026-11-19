@@ -1,0 +1,78 @@
+{
+  "trial": "eval_medicine_box_black_050000_trial06",
+  "joint_order": [
+    "shoulder_pan",
+    "shoulder_lift",
+    "elbow_flex",
+    "wrist_flex",
+    "wrist_roll",
+    "gripper"
+  ],
+  "alignment": {
+    "rows": 563,
+    "fps": 30,
+    "consecutive_frame_indices": true,
+    "timestamp_grid_max_error_seconds": 8.900960288826809e-07,
+    "cameras": {
+      "fixed": {
+        "decoded_frames": 563,
+        "first_pts_seconds": 0.0,
+        "last_pts_seconds": 18.733333333333334,
+        "max_timestamp_difference_seconds": 8.900960288826809e-07
+      },
+      "handeye": {
+        "decoded_frames": 426,
+        "first_pts_seconds": 0.0,
+        "last_pts_seconds": 14.166666666666666,
+        "max_timestamp_difference_seconds": 4.4504801444134046e-07
+      }
+    },
+    "hardware_exposure_synchronization_measured": false
+  },
+  "sources": [
+    {
+      "dataset_relative_path": "eval_medicine_box_black_050000_trial06/data/chunk-000/episode_000000.parquet",
+      "sha256": "0af5a96c6f1c102fc3ccca2463ac6fe5490daa67134e8d21aec66cf738104420",
+      "bytes": 41088,
+      "mtime_local": "2026-09-29T17:52:10"
+    },
+    {
+      "dataset_relative_path": "eval_medicine_box_black_050000_trial06/meta/info.json",
+      "sha256": "a93c61a633966f0a705bac5e22cf00e0e4f45b6336ccc6630fd3ab5bc08d146a",
+      "bytes": 2611,
+      "mtime_local": "2026-09-29T17:51:34"
+    },
+    {
+      "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+      "sha256": "d0aba39da6dd0bbcf93c384285f94d371c993071e326dcabf7f5eadf95c5a942",
+      "decoded_frames": 563,
+      "fps": "30",
+      "width": 640,
+      "height": 480,
+      "duration_seconds": 18.766666666666666
+    },
+    {
+      "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+      "sha256": "3e8e572c1b8082fec32ea2464c4aa09b179d7779f8f58a966445037d168ae5bd",
+      "decoded_frames": 426,
+      "fps": "30",
+      "width": 640,
+      "height": 480,
+      "duration_seconds": 14.2
+    }
+  ],
+  "position_units": "Calibration-normalized servo position: body -100..100, gripper 0..100; not radians or degrees.",
+  "plotted_columns": {
+    "solid_teal": "observation.state",
+    "dashed_amber": "action"
+  },
+  "action_semantics": "Recorded action returned by robot.send_action; not offline model predictions.",
+  "current_or_torque_recorded": false,
+  "time_cuts": false,
+  "playback_speed": 1,
+  "controller": "Unverified; 050000 in directory name, no controller or checkpoint hash.",
+  "csv_sha256": "ef8d5dd19e019ac43bdcbdcea8fefd5df005ebf79fdd85d59c76ee9e0ff3366f",
+  "csv_rows": 563,
+  "camera_transforms": "Fixed: native 640x480; wrist: resized to 304x228; no crop or retouching.",
+  "missing_handeye_frames": 137
+}

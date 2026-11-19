@@ -1,0 +1,32 @@
+[
+  {
+    "id": "act_50k",
+    "training_step": 50000,
+    "source_relative_path": "outputs/checkpoints/050000/pretrained_model",
+    "model_bytes": 206701072,
+    "model_sha256": "a6d4f794e426e4706b3b57ce1274b0da7a654b7a0080bbd708b5ae50352b65d3",
+    "config_sha256_original": "4a8164ae524e440d95779c91805f69e186e4a8f6b2e97158935f11a608bda329",
+    "train_config_sha256_original": "b389d2c4ec8112b93cef6096c92aefd30d9ae8f21b3c40f988fba1696fef4222",
+    "published_weights": false
+  },
+  {
+    "id": "smolvla_50k",
+    "training_step": 50000,
+    "source_relative_path": "outputs/smolvla/050000/pretrained_model",
+    "model_bytes": 1197790016,
+    "model_sha256": "308c5f218c8dcdd2125459d010b59a390d4fe84cb08f91824a0fa86f7e7bcdba",
+    "config_sha256_original": "1b0c3fa08de87aec87aa4c355b27456b4a0d587b258544265a7942aa5de1006d",
+    "train_config_sha256_original": "20b536a9b1586d8ba0f9027b167669c0edd65453bf07c60afefdaf79ef9448ab",
+    "published_weights": false
+  },
+  {
+    "id": "smolvla_5k",
+    "training_step": 5000,
+    "source_relative_path": "outputs/smolvla/005000/pretrained_model",
+    "model_bytes": 1197790016,
+    "model_sha256": "c0d1622fe970920771562451e8e5d79998676b2d55a8ca08ee2447506b59e0a5",
+    "config_sha256_original": "1b0c3fa08de87aec87aa4c355b27456b4a0d587b258544265a7942aa5de1006d",
+    "train_config_sha256_original": "20b536a9b1586d8ba0f9027b167669c0edd65453bf07c60afefdaf79ef9448ab",
+    "published_weights": false
+  }
+]
