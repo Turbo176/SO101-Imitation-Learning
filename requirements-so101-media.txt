@@ -1,7 +1,0 @@
-# Optional: rebuild labeled presentation videos from the original local dataset.
-av>=14
-Pillow>=10
-imageio-ffmpeg>=0.6,<0.7
-numpy>=1.24
-pandas>=2,<3
-pyarrow>=14

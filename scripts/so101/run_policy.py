@@ -1,15 +1,8 @@
-"""Run the trained SmolVLA checkpoint locally (SO101 follower + 2 USB cameras).
+"""Run a local SmolVLA checkpoint with an SO-101 follower and two cameras.
 
-Three modes, safest first:
-
-1. offline synthetic  : no hardware at all, checks the checkpoint loads and emits actions.
-2. live dry run       : connects arm + cameras, predicts real chunks, but sends nothing.
-3. live control       : predicts with the real cameras and drives the arm.
-
-The checkpoint is the one trained on `medicine_box_black_5_20s_v1`:
-  state/action = 6 joints, cameras = observation.images.fixed + observation.images.handeye,
-  task text   = "Pick up the green medicine box and place it in the black target area",
-  action chunk = 50 steps, so one inference is followed by 49 cached steps.
+Offline mode uses synthetic input. Live mode connects/configures motors and reads
+cameras; --execute additionally sends policy targets. The checkpoint expects
+fixed/handeye RGB views, six joint positions and the recorded task instruction.
 """
 from __future__ import annotations
 
@@ -61,7 +54,7 @@ def defaults() -> argparse.Namespace:
     p.add_argument('--height', type=int, default=480)
     p.add_argument('--camera-fps', type=int, default=FPS)
     p.add_argument('--max-relative-target', type=float, default=None,
-                   help='safety clip in joint units per step (try 5 and raise it if the arm is too slow)')
+                   help='maximum target change per step, in normalized joint units')
     p.add_argument('--snapshot-dir', type=Path, default=None, help='write the first observation frames here')
     p.add_argument('--output', type=Path, default=None, help='write a JSON report here')
     p.add_argument('--list-cameras', action='store_true',
@@ -126,7 +119,7 @@ def load_policy(args):
     config.device = args.device
     config.vlm_model_name = str(assets)
     config.load_vlm_weights = False
-    config.use_amp = False  # GTX 1650 Ti has no bf16; FP32 is the verified path.
+    config.use_amp = False  # Use the FP32 deployment profile.
 
     started = time.perf_counter()
     policy = SmolVLAPolicy.from_pretrained(model, config=config, strict=True, local_files_only=True)
@@ -362,7 +355,7 @@ def main() -> int:
     code = 0
     try:
         if args.mode == 'live' and not args.execute:
-            print('LIVE DRY RUN: cameras and arm are read, but no action is sent.\n', flush=True)
+            print('Live preview: motors are configured and torque enabled; policy targets are disabled.\n', flush=True)
         policy, config, info = load_policy(args)
         result.update(info)
         print(json.dumps(info, ensure_ascii=False, indent=2), flush=True)

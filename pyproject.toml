@@ -17,16 +17,15 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project.urls]
-homepage = "https://huggingface.co/lerobot"
-documentation = "https://huggingface.co/docs/lerobot/index"
-source = "https://github.com/huggingface/lerobot"
-issues = "https://github.com/huggingface/lerobot/issues"
-discord = "https://discord.gg/s3KuuzsPFb"
+homepage = "https://github.com/Turbo176/SO101-Imitation-Learning"
+documentation = "https://github.com/Turbo176/SO101-Imitation-Learning#quickstart"
+source = "https://github.com/Turbo176/SO101-Imitation-Learning"
+issues = "https://github.com/Turbo176/SO101-Imitation-Learning/issues"
 
 [project]
 name = "lerobot"
 version = "0.3.4"
-description = "🤗 LeRobot: State-of-the-art Machine Learning for Real-World Robotics in Pytorch"
+description = "SO-101 imitation learning with ACT and SmolVLA, based on LeRobot 0.3.4"
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.10"
@@ -44,6 +43,7 @@ authors = [
     { name = "Martino Russi", email = "nopyeps@gmail.com"},
     { name = "Thomas Wolf", email = "thomaswolfcontact@gmail.com" },
 ]
+maintainers = [{ name = "Turbo176" }]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -124,6 +124,14 @@ hilserl = ["lerobot[transformers-dep]", "gym-hil>=0.1.9", "lerobot[grpcio-dep]",
 
 # Features
 async = ["lerobot[grpcio-dep]", "matplotlib>=3.10.3"]
+tools = [
+    "matplotlib>=3.8,<4",
+    "Pillow>=10",
+    "imageio-ffmpeg>=0.6,<0.7",
+    "numpy>=1.24",
+    "pandas>=2,<3",
+    "pyarrow>=14",
+]
 
 # Development
 dev = ["pre-commit>=3.7.0", "debugpy>=1.8.1", "lerobot[grpcio-dep]", "grpcio-tools==1.73.1"]

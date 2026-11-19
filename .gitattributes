@@ -19,5 +19,5 @@
 *.json !text !filter !merge !diff
 tests/artifacts/cameras/*.png filter=lfs diff=lfs merge=lfs -text
 *.bag filter=lfs diff=lfs merge=lfs -text
-# Small, curated README videos are regular Git blobs for direct GitHub playback.
+# Small README videos are regular Git blobs for direct download.
 media/so101/*.mp4 -filter -diff -merge -text

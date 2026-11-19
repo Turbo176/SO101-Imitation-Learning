@@ -1,4 +1,5 @@
-# Compatible with this checkout's LeRobot 0.3.4 SmolVLA.
+# Version constraints for the SO-101 environment. Core dependencies live in pyproject.toml.
+# Install: python -m pip install -e ".[feetech,smolvla]" -c requirements.txt
 torch==2.7.1
 torchvision==0.22.1
 transformers==4.51.3

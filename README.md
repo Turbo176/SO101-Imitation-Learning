@@ -1,5 +1,5 @@
 <h1 align="center">SO-101 Imitation Learning</h1>
-<p align="center"><strong>Real-to-real learning · physical demonstrations, ACT / SmolVLA, and robot deployment</strong></p>
+<p align="center"><strong>Real-to-real · demonstrations, ACT / SmolVLA training, and robot deployment</strong></p>
 <p align="center">
   <img src="media/so101/badge-lerobot.svg" alt="LeRobot 0.3.4">
   <img src="media/so101/badge-python.svg" alt="Python 3.10">
@@ -7,270 +7,233 @@
   <img src="media/so101/badge-license.svg" alt="Apache 2.0">
 </p>
 
-This project uses an **SO-101 leader–follower pair**, two RGB cameras, and the existing LeRobot training stack to learn one physical task:
+I used an SO-101 leader–follower pair and two RGB cameras to collect demonstrations for one task:
 
 > Pick up the green medicine box and place it in the black target area.
 
-The experiment includes real teleoperation data, **ACT and SmolVLA checkpoints trained to 50,000 steps**, and real-robot deployment recordings. ACT training and the surviving deployment videos date to **September 29, 2026**; SmolVLA training and the analysis tools date to **October 7–13, 2026**. See the [recorded timeline and source provenance](docs/so101/provenance.md).
+ACT and SmolVLA were trained to **50,000 steps** on a remote GPU server. This repository contains the code, configurations, training logs, diagnostic results and selected robot recordings. ACT training and the deployment videos date to **September 29, 2026**; SmolVLA training and analysis date to **October 7–13, 2026**. The source was published in November. [Project history](docs/so101/provenance.md).
 
-<p align="center"><strong>🧭 Contents</strong></p>
-
+<p align="center"><strong>Contents</strong></p>
 <p align="center">
-  <a href="#demo">🎬 Demo</a> &nbsp;·&nbsp;
-  <a href="#features">✨ Main features</a> &nbsp;·&nbsp;
-  <a href="#architecture">🧩 System architecture</a>
+  <a href="#demo">Demo</a> &nbsp;·&nbsp;
+  <a href="#features">Features</a> &nbsp;·&nbsp;
+  <a href="#architecture">Architecture</a>
 </p>
 <p align="center">
-  <a href="#collection">🎮 Data collection</a> &nbsp;·&nbsp;
-  <a href="#training">🧠 Training &amp; deployment</a> &nbsp;·&nbsp;
-  <a href="#remote-training">☁️ Remote GPU training</a>
+  <a href="#collection">Data collection</a> &nbsp;·&nbsp;
+  <a href="#training">Training &amp; deployment</a> &nbsp;·&nbsp;
+  <a href="#remote-training">Remote training</a>
 </p>
 <p align="center">
-  <a href="#results">📈 Experimental results</a> &nbsp;·&nbsp;
-  <a href="#quickstart">🚀 Quick start</a> &nbsp;·&nbsp;
-  <a href="#structure">📂 Project structure</a> &nbsp;·&nbsp;
-  <a href="#credits">📚 Citation &amp; license</a>
+  <a href="#results">Results</a> &nbsp;·&nbsp;
+  <a href="#quickstart">Quick start</a> &nbsp;·&nbsp;
+  <a href="#structure">Project structure</a> &nbsp;·&nbsp;
+  <a href="#credits">Citation &amp; license</a>
 </p>
-
-<p align="center"><sub>Jump to a section above. Full commands and troubleshooting live in the linked guides.</sub></p>
 
 <a id="demo"></a>
 ## 🎬 Demo
 
 <p align="center">
-  <a href="media/so101/deployment-trial06-telemetry.mp4?raw=true"><img src="media/so101/deployment-trial06-telemetry.gif" width="960" alt="Trial06 real fixed and wrist camera footage synchronized with six measured joint-position histories and sent targets; moving cursors and values follow the recorded timestamps"></a>
-  <br><sub>Trial06 · real cameras + recorded joint motion · full 18.77 s · 1× playback · no time cuts</sub>
+  <a href="media/so101/deployment-trial06-telemetry.mp4?raw=true"><img src="media/so101/deployment-trial06-telemetry.gif" width="920" alt="SO-101 grasp and placement with fixed/wrist views and synchronized joint positions"></a>
+  <br><sub>Trial06 · deployment recording · full 18.77 s · 1× · no time cuts</sub>
 </p>
 
-**[Download video + telemetry MP4](media/so101/deployment-trial06-telemetry.mp4?raw=true)** · [Recorded samples](results/so101/telemetry/trial06.csv) · [Alignment checks and sources](results/so101/telemetry/trial06.json)
+[Watch / download MP4](media/so101/deployment-trial06-telemetry.mp4?raw=true)
 
-Watch the grasp alongside all six joints: **solid teal is measured position; dashed amber is the sent target**. The histories reveal each recorded sample as the moving time cursor reaches it. These are the trial's actual `observation.state` and `action` values, paired with video presentation timestamps and frame indices. This is synchronized playback of existing records. Position follows the calibration-normalized servo convention; no motor-current or torque traces were recorded. [How the synchronization works](docs/so101/media.md#video-and-joint-motion).
+The fixed camera shows the pick-and-place while the wrist view follows the gripper. Solid curves show measured joint positions; dashed curves show sent targets. These are normalized servo positions; current and torque were not recorded. The wrist recording ends at 14.20 s, and an ending card marks the missing interval.
 
-The fixed camera shows the complete pick-and-place; the wrist view shows the approach and object close up. **The handeye recording ends at 14.20 s**: a text card marks the remaining 4.57 s while the fixed view continues. Views are paired by recorded frame index; hardware exposure synchronization was not measured.
+The old trial directory is named `050000`, but its command, model family and checkpoint hash were not saved. I have kept the label **deployment recording** until those details can be confirmed. [Recording details](docs/so101/evaluation.md#video-and-joint-motion).
 
-The source directory identifies **050000**, but does not store a controller name or checkpoint hash. **ACT versus SmolVLA and autonomous-control provenance remain unverified**. The export keeps the full fixed-camera interval, including the initial wait. This selected trajectory is separate from task-success statistics.
-
-<p align="center"><img src="media/so101/task-sequence.webp" width="920" alt="Four source frames from trial06: approach at 8.03 seconds, lift at 10.70, lower at 13.37, released at 16.07"></p>
+<p align="center"><img src="media/so101/task-sequence.webp" width="920" alt="Trial06 source frames: approach, lift, lower and release"></p>
 
 <details>
-<summary>More camera footage: full-size two-view recording and a second deployment</summary>
+<summary>More views and recordings</summary>
 
 <p align="center">
-  <a href="media/so101/deployment-trial06-two-view.mp4?raw=true"><img src="media/so101/deployment-trial06-two-view.gif" width="800" alt="Trial06 fixed and wrist camera views at equal size; the missing final wrist interval is marked"></a>
-  <br><sub>Trial06 · equal-size camera views · full 18.77 s · 1× · no time cuts</sub>
+  <a href="media/so101/deployment-trial06-two-view.mp4?raw=true"><img src="media/so101/deployment-trial06-two-view.gif" width="800" alt="Trial06 with equal-size fixed and wrist views"></a>
+  <br><sub>Trial06 · two views · 18.77 s · 1× · missing wrist interval marked</sub>
 </p>
 
-[Download two-view MP4](media/so101/deployment-trial06-two-view.mp4?raw=true) · [Native fixed-camera MP4](media/so101/deployment-trial06.mp4?raw=true) · [Larger fixed-camera display copy](media/so101/deployment-trial06-display-1280.mp4?raw=true).
+[Two-view MP4](media/so101/deployment-trial06-two-view.mp4?raw=true) · [Native fixed-camera MP4](media/so101/deployment-trial06.mp4?raw=true) · [1280×960 display copy](media/so101/deployment-trial06-display-1280.mp4?raw=true). The display copy uses resizing and mild sharpening; the source is 640×480.
 
 <p align="center">
-  <a href="media/so101/deployment-trial04-two-view.mp4?raw=true"><img src="media/so101/deployment-trial04-two-view.gif" width="800" alt="Trial04 fixed and wrist views showing grasp and placement, with human cable handling and the final reset retained"></a>
-  <br><sub>Trial04 · both complete camera streams · full 12.63 s · 1× · human cable handling and reset retained</sub>
+  <a href="media/so101/deployment-trial04-two-view.mp4?raw=true"><img src="media/so101/deployment-trial04-two-view.gif" width="800" alt="Trial04 grasp and placement, including human cable handling and reset"></a>
+  <br><sub>Trial04 · deployment recording · 12.63 s · 1× · cable handling and human reset included</sub>
 </p>
 
-[Download trial04 MP4](media/so101/deployment-trial04-two-view.mp4?raw=true). This is another **deployment recording**, with the same missing controller/checkpoint identifiers. Human interaction is visible and retained. [Human demonstration footage](#collection) is labeled separately below; [failure observations](#results) are included with the evaluation scope.
+[Trial04 MP4](media/so101/deployment-trial04-two-view.mp4?raw=true). The controller/checkpoint identifiers are also missing for this recording. Both clips keep the complete saved interval.
 
 </details>
 
-[Media manifest](results/so101/media_manifest.json) records source hashes, frame counts, and processing. Demonstration replay and scripted control are not presented as learned-policy footage.
-
 <a id="features"></a>
-## ✨ Main features
+## Main features
 
-- **Physical demonstration collection:** SO-101 leader input, follower execution, two camera streams, six joint positions, and the actions actually sent to the follower.
-- **Two trained policies:** ACT with a ResNet-18 visual backbone and 100-step action chunks; SmolVLA with two-view image/state input, task text, and 50-step action chunks.
-- **Local deployment tools:** strict checkpoint loading, saved normalization buffers, an offline compatibility check, and a SmolVLA live inference runner with explicit execution mode.
-- **Hardware integration changes:** selectable OpenCV capture codec, SO-101 serial retry settings, and empty-episode recording handling. Existing dual-arm integration code is retained but was not evaluated in this single-arm experiment.
-- **Traceable results:** original loss CSVs, compact saved predictions, checkpoint hashes, a complete training-data audit, and scripts to recompute diagnostics.
-- **Recorded motion in context:** real camera footage synchronized with six measured joint positions and sent targets, with the selected sample table and timestamp checks included.
+- Leader–follower demonstration collection with two camera streams and six-joint state/action recording.
+- ACT with a ResNet-18 backbone and 100-step chunks; SmolVLA with image/state/task input and 50-step chunks.
+- Local SmolVLA loading, offline checks and a live runner, plus the standard LeRobot rollout recorder.
+- SO-101 serial retries, configurable OpenCV capture codec and empty-episode handling.
+- Training curves, saved predictions and scripts to recompute the included metrics.
 
 <a id="architecture"></a>
-## 🧩 System architecture
+## System architecture
 
-<p align="center"><img src="media/so101/architecture.svg" width="920" alt="Human leader input drives the SO-101 follower for two-view demonstration collection; ACT or SmolVLA training produces a checkpoint used for physical deployment"></p>
+<p align="center"><img src="media/so101/architecture.svg" width="920" alt="Demonstration collection, ACT/SmolVLA training and SO-101 deployment"></p>
 
-| Component | Experiment configuration |
+| Component | Configuration |
 | --- | --- |
-| Robot | SO-101 follower, with SO-101 leader for demonstrations |
-| Camera inputs | `observation.images.fixed` and `observation.images.handeye` |
-| Recorded video | RGB, 640 × 480, 30 FPS, AV1, no audio |
-| State / action | Six joint-position values in the same recorded order |
-| Dataset format | LeRobot **v2.1**, per-episode Parquet and per-camera MP4 |
-| Training | Saved Linux training configs; batch size 4, seed 1000, 50,000 steps |
-| Local inference evidence | Windows, Python 3.10, PyTorch 2.7.1 + CUDA 12.8, GTX 1650 Ti |
+| Robot | SO-101 follower; SO-101 leader for demonstrations |
+| Views | `observation.images.fixed`, `observation.images.handeye` |
+| Recording | RGB, 640×480, 30 FPS, AV1, no audio |
+| State / action | Six joint positions |
+| Dataset | LeRobot v2.1, per-episode Parquet and per-camera MP4 |
+| Training | Remote Linux GPU server, batch size 4, seed 1000 |
+| Local inference checks | Windows, Python 3.10, PyTorch 2.7.1 + CUDA 12.8, GTX 1650 Ti |
 
-Training and deployment must agree on camera names, view assignment, image shape, joint order, calibration convention, and normalization buffers. [Configuration relationships](docs/so101/deployment.md#configuration-contract) explains each dependency.
+Camera assignment, joint order, calibration and model normalization must agree at deployment. See the [configuration contract](docs/so101/deployment.md#configuration-contract).
 
-### What the policy sees
+<p align="center"><img src="media/so101/camera-inputs.webp" width="920" alt="Actual fixed and handeye inputs from demonstration54"></p>
 
-<p align="center"><img src="media/so101/camera-inputs.webp" width="920" alt="Two native frames from demonstration54 at 7 seconds: the fixed camera sees the tabletop and target, and the handeye camera sees the object and gripper close up"></p>
-
-The fixed view covers the work area and target; the moving handeye view provides a close view during grasping. These are the actual two inputs stored under `observation.images.fixed` and `observation.images.handeye`. The camera images retain their recorded orientation and field of view.
+The fixed view covers the workspace and target. The handeye view provides a closer view of the object during grasping.
 
 <a id="collection"></a>
-## 🎮 Data collection
+## Data collection
 
-The leader controls the follower while LeRobot records images and joint readings in each control iteration. The dataset stores the **action returned by `robot.send_action`**, so clipped targets are recorded as sent.
+The human moves the leader arm while the follower executes and LeRobot records the images, positions and targets actually sent to the motors.
 
 <p align="center">
-  <a href="media/so101/teleoperation-episode54.mp4?raw=true"><img src="media/so101/teleoperation-episode54.gif" width="800" alt="Two-camera human teleoperation demonstration from training episode54, with the complete grasp and placement"></a>
-  <br><sub>Human teleoperation · training episode54 · full 12.23 s · 1× playback · no time cuts</sub>
+  <a href="media/so101/teleoperation-episode54.mp4?raw=true"><img src="media/so101/teleoperation-episode54.gif" width="800" alt="Human teleoperation demonstration from training episode54"></a>
+  <br><sub>Human teleoperation · episode54 · full 12.23 s · 1× · no time cuts</sub>
 </p>
 
-[Download demonstration MP4](media/so101/teleoperation-episode54.mp4?raw=true). The human drives the leader arm; this training episode is not a policy rollout.
+[Demonstration MP4](media/so101/teleoperation-episode54.mp4?raw=true)
 
-| Training data | Verified value |
+| Dataset | Value |
 | --- | ---: |
-| Demonstration episodes | 55 |
-| Recorded control frames | 20,512 |
-| Two-view video files | 110 |
-| Recorded time | 11.40 min |
+| Demonstrations | 55 |
+| Control frames | 20,512 |
+| Camera videos | 110 |
+| Total duration | 11.40 min |
 | Episode duration | 9.30–13.37 s |
-| Metadata split | `train: 0:55` |
+| Split | `train: 0:55` |
 
-All 55 Parquet files and all 110 videos pass the [saved audit](results/so101/dataset/audit.json), including decoded video frame counts. The dataset name contains `20s`; actual episode durations come from the records. The two views share dataset timestamps; hardware exposure synchronization was not measured.
-
-The full dataset remains outside Git. Use the [collection and data guide](docs/so101/data.md) for calibration, recording, readback, and dataset validation commands.
+All Parquet files and video frame counts pass the [dataset audit](results/so101/dataset/audit.json). All 55 episodes were used for training. The complete dataset is excluded from Git. [Setup, calibration and collection commands](docs/so101/setup.md).
 
 <a id="training"></a>
-## 🧠 Training and deployment
+## Training and deployment
 
 | Setting | ACT | SmolVLA |
 | --- | --- | --- |
-| Actual final step | 50,000 | 50,000 |
-| Native action chunk | 100 steps | 50 steps |
+| Final step | 50,000 | 50,000 |
+| Action chunk | 100 | 50 |
 | Batch size / seed | 4 / 1000 | 4 / 1000 |
 | Learning rate | `1e-5` | `1e-4`, warmup + cosine decay |
 | Image normalization | ImageNet mean/std | Identity at policy input; internal image processing |
 | State / action normalization | Mean/std | Mean/std |
-| Checkpoint interval | 10,000 steps | 5,000 steps |
-| Task text input | Not used by ACT | Exact recorded instruction |
-
-The original trainer, dataset loader, policy implementations, optimizer handling, and checkpoint resume mechanism are retained. [Training instructions](docs/so101/training.md) distinguish archived settings, a fresh-training recipe, and exact checkpoint resume. The saved SmolVLA config does not establish its original initialization source.
+| Checkpoint interval | 10,000 | 5,000 |
+| Task text | Not used | Recorded instruction |
 
 <a id="remote-training"></a>
-### ☁️ Train on a remote GPU server
+### Remote GPU training
 
-Both policies were trained on a **remote Linux GPU server**. The local robot computer collects demonstrations and runs deployment; the server trains from a copy of the same dataset and repository. Robot ports and private calibration stay on the robot computer.
-
-| Robot computer | Remote training server |
-| --- | --- |
-| Collect and audit the fixed/handeye demonstrations | Reuse a compatible GPU environment; copy and validate the dataset |
-| Keep robot calibration and camera mapping | Train ACT or SmolVLA with the exported settings |
-| Receive the complete checkpoint and run an offline check | Save logs, optimizer/scheduler state and checkpoint hashes |
-| Connect the follower for physical deployment | Return the checkpoint without publishing weights |
+Collect on the robot computer, transfer the complete dataset, train on the server and bring back the numbered checkpoint. The [training guide](docs/so101/training.md) covers transfer, environment setup, pretrained assets, tmux, logs and resume.
 
 ```bash
-# In this repository on the server, with the dataset in the sibling datasets/ directory.
 python -m lerobot.scripts.train --config_path=configs/so101/train_act.json --output_dir=outputs/train/act_cloud_50k
 python -m lerobot.scripts.train --config_path=configs/so101/train_smolvla.json --output_dir=outputs/train/smolvla_cloud_50k
 ```
 
-Run the two jobs separately on a single GPU. The **[remote GPU training walkthrough](docs/so101/remote-training.md)** covers environment checks, data transfer, pretrained assets, persistent sessions, loss logs, exact resume and checkpoint transfer back to the robot. The original server GPU and full environment lock were not retained; the guide labels the current compatible recipe separately from the historical run.
+Run the jobs separately on a single GPU. The original server GPU and full environment lock were not saved; the guide gives a compatible new-run recipe and distinguishes it from the archived settings.
 
-Deploy ACT using `python -m lerobot.record --policy.path=...`; use the migrated `scripts/so101/run_policy.py` for the existing offline SmolVLA loading path, or the standard recorder when rollout recording is needed. The runner is synchronous: it pauses to generate each new action chunk. A 30 FPS target does not establish a measured 30 Hz end-to-end control rate. [Deployment guide](docs/so101/deployment.md).
+For deployment, use `python -m lerobot.record --policy.path=...` to record a rollout, or `scripts/so101/run_policy.py` for local SmolVLA inference. The runner waits when generating each new chunk, so the requested 30 FPS is not a measured end-to-end control rate. [Offline checks and deployment](docs/so101/deployment.md).
 
 <a id="results"></a>
 ## 📈 Experimental results
 
-<p align="center"><img src="media/so101/training-results.svg" width="920" alt="Separate ACT and SmolVLA training losses and checkpoint action error on matched training observations"></p>
+<p align="center"><img src="media/so101/training-results.svg" width="920" alt="ACT/SmolVLA training loss and checkpoint action error on training observations"></p>
 
-**Post-training diagnostics on training observations:** 5 episodes × 3 observations, matched across models; future 50-step predictions scored against recorded actions. nMAE and nRMSE divide each joint error by the same training-action standard deviation.
+These diagnostics compare 50-step predictions against recorded actions at 15 observations from five training episodes. nMAE and nRMSE use each joint's training-action standard deviation.
 
 | 50k checkpoint | nMAE ↓ | nRMSE ↓ | Mean joint R² ↑ |
 | --- | ---: | ---: | ---: |
 | ACT | 0.07877 | 0.13021 | 0.97642 |
 | SmolVLA | 0.06887 | 0.12566 | 0.97702 |
 
-These measurements describe action fitting on **seen training observations**. R² is not classification accuracy, and these values are not grasp-success rates. Loss objectives differ between models, so their absolute training losses are plotted separately.
+The observations were seen during training. These scores measure action fitting, not physical success or generalization; the two loss objectives are plotted separately. [Methods and result files](docs/so101/evaluation.md).
 
 <details>
-<summary>Inspect the six-joint action chunks</summary>
+<summary>Six-joint predictions</summary>
 
-<p align="center"><img src="media/so101/action-chunks.svg" width="920" alt="Recorded actions and ACT/SmolVLA 50k predictions for all six joints at the preselected middle diagnostic observation"></p>
+<p align="center"><img src="media/so101/action-chunks.svg" width="920" alt="ACT/SmolVLA predictions and recorded targets for all six joints"></p>
 
-This is the middle of the 15 retained observations: **episode26, approximately halfway through the episode**. Both 50k checkpoints predict the same next 50 recorded steps from one observation. The curves come directly from the included prediction arrays; they are offline predictions, not executed robot trajectories. Position units follow the recorded normalized servo convention. [Reproduce the plots](docs/so101/evaluation.md).
+The middle saved observation, from episode26 halfway through the episode. Both models predict the next 50 targets from the same input. These are offline predictions in recorded position units.
 
 </details>
 
-| Physical evaluation item | Recorded result |
+| Physical evaluation | Available record |
 | --- | --- |
-| Successful autonomous trials / attempted autonomous trials | — / — |
-| Consistent, predefined success protocol | Not recorded |
-| Conditions visible in videos | Same tabletop and black target; box pose varies |
-| Failure observations | Box knocked over; no completed pickup within clip; incomplete camera recordings |
-| Independent held-out split | Not recorded; all 55 demonstration episodes were used for training |
+| Verified autonomous successes / attempts | — / — |
+| Success protocol | Not recorded |
+| Conditions | Same tabletop/target, varying box pose |
+| Observed problems | Box tips, missed pickup, incomplete camera saves |
+| Held-out split | None |
 
-Surviving deployment artifacts are listed [trial by trial](docs/so101/evaluation.md). A missing denominator, incomplete recordings, and absent controller identifiers prevent a defensible success-rate estimate. The [evaluation protocol and blank outcome sheet](results/so101/physical_trials.csv) provide the fields needed for a future measured evaluation.
+The old recordings lack a complete attempt log and per-trial controller identifiers, so I have left the success rate blank. [Trial inventory and evaluation protocol](docs/so101/evaluation.md#deployment-recordings).
 
 <details>
-<summary>Inspect a failure recording: box tips before a completed placement</summary>
+<summary>Failure recording</summary>
 
 <p align="center">
-  <a href="media/so101/deployment-trial03-two-view.mp4?raw=true"><img src="media/so101/deployment-trial03-two-view.gif" width="800" alt="Trial03 shows the box tipping over without completed placement; both original camera views and a human hand at the end are retained"></a>
-  <br><sub>Trial03 · deployment recording · controller identity unverified · full 12.23 s · 1×</sub>
+  <a href="media/so101/deployment-trial03-two-view.mp4?raw=true"><img src="media/so101/deployment-trial03-two-view.gif" width="800" alt="Trial03: the box tips and no placement is completed"></a>
+  <br><sub>Trial03 · deployment recording · full 12.23 s · 1× · no time cuts</sub>
 </p>
 
-[Download failure MP4](media/so101/deployment-trial03-two-view.mp4?raw=true). The box tips and no placement is completed within the saved interval. A human hand appears at the end. This qualitative observation is not assigned an autonomous success/failure label without the missing control log.
+[Trial03 MP4](media/so101/deployment-trial03-two-view.mp4?raw=true). The box tips without placement during the saved interval; a hand enters near the end. Controller identity is unconfirmed.
 
 </details>
 
 <a id="quickstart"></a>
-## 🚀 Quick start
+## Quick start
 
-Run commands from this repository root in the existing Python 3.10 environment, or install the pinned compatibility profile. Install a PyTorch wheel suitable for the host; the recorded Windows GPU environment used CUDA 12.8.
+Use Python 3.10 and run from the repository root. Select a PyTorch wheel supported by your driver:
 
 ```bash
 python -m pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu128
-python -m pip install -e ".[feetech,smolvla]" -c requirements-so101.txt
+python -m pip install -e ".[feetech,smolvla]" -c requirements.txt
 python -m pip check
-
-# Recompute the included results; no robot, weights, or full dataset required.
 python scripts/so101/verify_results.py
-
-# Validate an existing local dataset, without modifying it.
-python scripts/so101/audit_dataset.py --root ../datasets/medicine_box_black_5_20s_v1 --decode-videos
-
-# Train ACT from the exported experiment configuration.
-python -m lerobot.scripts.train --config_path=configs/so101/train_act.json
 ```
 
-Weights and full demonstrations are not distributed in this Git source release. Training requires your dataset; inference requires the matching `config.json` and `model.safetensors`. SmolVLA offline loading also needs its pinned processor/tokenizer assets. No model or dataset download is implied by a local path.
+`requirements.txt` pins the checked model package versions; `pyproject.toml` defines core dependencies and optional extras. Add `.[tools]` for plots and video exports. Full demonstrations and weights are excluded: training needs a dataset, and inference needs the matching trained checkpoint and processor assets.
 
-| Operation | Guide |
+| Guide | Contents |
 | --- | --- |
-| Install, find ports/cameras, calibrate | [Setup](docs/so101/setup.md) |
-| Collect, inspect, replay, validate | [Data](docs/so101/data.md) |
-| Train ACT/SmolVLA and resume | [Training](docs/so101/training.md) |
-| Transfer data, train on a server, retrieve checkpoints | [Remote GPU walkthrough](docs/so101/remote-training.md) |
-| Load checkpoint, check offline, deploy | [Deployment](docs/so101/deployment.md) |
-| USB, video, and checkpoint issues | [Troubleshooting](docs/so101/troubleshooting.md) |
+| [Setup](docs/so101/setup.md) | Install, ports/cameras, calibration, collection, audit and replay |
+| [Training](docs/so101/training.md) | Remote GPU workflow, local commands, logs and resume |
+| [Deployment](docs/so101/deployment.md) | Model assets, offline checks and live recording |
+| [Results](docs/so101/evaluation.md) | Metrics, trial inventory and video processing |
+| [Project history](docs/so101/provenance.md) | Dates, local changes and upstream attribution |
 
 <a id="structure"></a>
-## 📂 Project structure
+## Project structure
 
 ```text
-src/lerobot/          Existing LeRobot code and local hardware changes
-scripts/so101/       Migrated inference tools, audits, result verification
-configs/so101/       Portable training recipes and archived checkpoint configs
-results/so101/       Loss CSVs, compact predictions, manifests, audit reports
-media/so101/         Local SVGs, GIF preview, selected MP4 recordings
-docs/so101/          Setup, reproduction, evaluation, provenance, troubleshooting
-docs/upstream/       Preserved upstream README
+src/lerobot/       LeRobot source with local hardware changes
+scripts/so101/    Inference, data audits, metrics and video tools
+configs/so101/    Training recipes and checkpoint configurations
+results/so101/    Logs, predictions, hashes and selected telemetry
+media/so101/      Diagrams, plots and selected recordings
+docs/so101/       Five guides linked above
 ```
 
-<details>
-<summary>Upstream directories and generated local files</summary>
-
-`examples/`, `tests/`, `benchmarks/`, and the original documentation source remain from LeRobot. `outputs/`, datasets, downloaded model assets, environments, local calibration, and weights are ignored. This release publishes a source snapshot of the existing LeRobot checkout at upstream base `882c80d4`, with the SO-101 experiment additions. Upstream authorship and license notices remain in the source; [provenance](docs/so101/provenance.md) identifies the base and experiment timeline.
-
-</details>
+The upstream examples, tests and benchmarks remain available. Generated outputs, environments, full datasets, weights and calibration files are ignored by Git.
 
 <a id="credits"></a>
-## 📚 Citation and license
+## Citation and license
 
-Built on [Hugging Face LeRobot](https://github.com/huggingface/lerobot), [ACT / ALOHA](https://tonyzhaozh.github.io/aloha/), and [SmolVLA](https://huggingface.co/papers/2506.01844). The model architectures and core learning infrastructure are upstream work. This repository contributes the recorded SO-101 experiment, local integration changes, deployment utilities, and accompanying evidence.
+Built on [Hugging Face LeRobot](https://github.com/huggingface/lerobot), [ACT / ALOHA](https://tonyzhaozh.github.io/aloha/) and [SmolVLA](https://huggingface.co/papers/2506.01844). The learning framework and model architectures come from upstream. This project adds the SO-101 experiment, hardware integration changes, deployment tools and recorded results.
 
-Source code retains the **Apache License 2.0** in [LICENSE](LICENSE), with attribution in [NOTICE](NOTICE). Downloaded model assets keep their own upstream terms and are not bundled. See [third-party attribution](docs/so101/provenance.md#third-party-material).
+The code uses [Apache-2.0](LICENSE), with upstream attribution in [NOTICE](NOTICE) and [project history](docs/so101/provenance.md#third-party-material). Downloaded model assets keep their own upstream terms.
 
 ```bibtex
 @misc{turbo176_so101_imitation_learning_2026,
