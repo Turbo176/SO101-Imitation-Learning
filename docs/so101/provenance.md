@@ -27,7 +27,7 @@ The project is described as a September–October 2026 experiment. The November 
 
 This repository was first published on November 19, 2026. README updates and the synchronized telemetry presentation were also authored on that date. GitHub's repository view uses commit dates, while the profile contribution timeline uses author dates; these can differ for imported work. The file list reflects the relevant Git commits, not old filesystem modification times or the dates of the underlying experiment. A file whose documentation changed on November 19 can therefore show that date even when it describes September–October work. The timeline above and retained source records establish the experiment chronology. The public branch was converted to an independent source snapshot on the same publication date; this changes history packaging without making the release appear older.
 
-GitHub documents the distinction in [“Why are my contributions not showing up on my profile?”](https://docs.github.com/en/account-and-profile/how-tos/setting-up-and-managing-your-github-profile/managing-contribution-settings/troubleshooting-missing-contributions), under “How GitHub uses the Git author date and commit date.”
+GitHub documents the distinction in its [profile contributions reference](https://docs.github.com/en/account-and-profile/reference/profile-contributions-reference#how-github-uses-the-git-author-date-and-commit-date), under “How GitHub uses the Git author date and commit date.”
 
 ## Retained local changes
 
