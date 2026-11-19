@@ -73,6 +73,20 @@
   "controller": "Unverified; 050000 in directory name, no controller or checkpoint hash.",
   "csv_sha256": "ef8d5dd19e019ac43bdcbdcea8fefd5df005ebf79fdd85d59c76ee9e0ff3366f",
   "csv_rows": 563,
-  "camera_transforms": "Fixed: native 640x480; wrist: resized to 304x228; no crop or retouching.",
+  "camera_transforms": "Fixed: native 640x480; wrist: resized to 288x216; no crop or retouching.",
+  "presentation": {
+    "layout": "Light neutral canvas; six unboxed position plots; one measured value per joint.",
+    "visible_labels": [
+      "SO-101",
+      "Pick & place",
+      "Fixed",
+      "Wrist",
+      "Joint position",
+      "Measured",
+      "Target",
+      "elapsed / duration"
+    ],
+    "technical_notes": "Source, units, recording completeness and controller provenance remain in the companion documentation."
+  },
   "missing_handeye_frames": 137
 }

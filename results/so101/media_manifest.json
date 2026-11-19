@@ -526,8 +526,8 @@
   },
   {
     "asset": "media/so101/deployment-trial06-telemetry.mp4",
-    "sha256": "4246f5f2b567e18e2be8e776b8e6e974106d18b0ecf41b2927fef84dc1eb0c00",
-    "bytes": 3416079,
+    "sha256": "150e3c8409761c97e5f00994714f75748294337c9372015966bac2d787662adb",
+    "bytes": 2942024,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial06/data/chunk-000/episode_000000.parquet",
@@ -560,7 +560,7 @@
         "duration_seconds": 14.2
       }
     ],
-    "transformations": "Synchronized real camera playback and six measured/sent-position histories; no future trace revealed. Entire recorded interval; missing wrist interval replaced by an explicit card.",
+    "transformations": "Minimal light layout with real camera playback and six measured/sent-position histories; one measured value per joint; source details in companion docs; no future trace revealed. Entire recorded interval; missing wrist interval replaced by an explicit card.",
     "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
     "playback_speed": 1,
     "time_cuts": false,
@@ -591,13 +591,13 @@
     "decoded_frames": 563,
     "fps": "30",
     "width": 1440,
-    "height": 936,
+    "height": 900,
     "duration_seconds": 18.766666666666666
   },
   {
     "asset": "media/so101/deployment-trial06-telemetry.gif",
-    "sha256": "1789742fe9d653d3afaac2b239bd31f7ee61e3e715f25197d8310272fdc11829",
-    "bytes": 7982941,
+    "sha256": "83dbe39cfc7a9c4860aa0cc9b07697619577cacf0b68674389d6ac852dc84366",
+    "bytes": 7768749,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial06/data/chunk-000/episode_000000.parquet",
@@ -630,7 +630,7 @@
         "duration_seconds": 14.2
       }
     ],
-    "transformations": "Synchronized real camera playback and six measured/sent-position histories; no future trace revealed. Entire recorded interval; missing wrist interval replaced by an explicit card.",
+    "transformations": "Minimal light layout with real camera playback and six measured/sent-position histories; one measured value per joint; source details in companion docs; no future trace revealed. Entire recorded interval; missing wrist interval replaced by an explicit card.",
     "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
     "playback_speed": 1,
     "time_cuts": false,
@@ -661,7 +661,7 @@
     "decoded_frames": 188,
     "fps": "10",
     "width": 960,
-    "height": 624,
+    "height": 600,
     "duration_seconds": 18.8
   }
 ]

@@ -11,19 +11,28 @@ import subprocess
 from contextlib import ExitStack
 from datetime import datetime
 from fractions import Fraction
+from functools import lru_cache
 from pathlib import Path
 
 import av
 import numpy as np
 import pandas as pd
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 from build_showcase import ROOT, digest, font, inspect
 
 JOINTS = ['shoulder_pan', 'shoulder_lift', 'elbow_flex', 'wrist_flex', 'wrist_roll', 'gripper']
-BG, PANEL, GRID = '#102838', '#173747', '#365260'
-INK, MUTED, STATE, ACTION = '#edf6fa', '#aec7d2', '#55dfbe', '#ffbd72'
-SIZE = (1440, 936)
+BG, PANEL, GRID = '#f7f7f4', '#eeefeb', '#dedfda'
+INK, MUTED, STATE, ACTION = '#252a2b', '#777e7d', '#137f82', '#c18a37'
+SIZE = (1440, 900)
+
+
+@lru_cache(maxsize=32)
+def ui_font(size, bold=False):
+    try:
+        return ImageFont.truetype('seguisb.ttf' if bold else 'segoeui.ttf', size)
+    except OSError:
+        return font(size, bold)
 
 
 def dashed(draw, points, fill, width=2):
@@ -117,48 +126,43 @@ def main():
 
     base = Image.new('RGB', SIZE, BG)
     draw = ImageDraw.Draw(base)
-    draw.text((22, 17), 'REAL ROBOT / RECORDED JOINT MOTION', font=font(31, True), fill=INK)
-    draw.text((22, 62), 'Trial06  |  synchronized playback  |  1x  |  full 18.77 s', font=font(23), fill=MUTED)
-    draw.text((22, 111), 'FIXED / TABLETOP', font=font(23, True), fill=STATE)
-    draw.text((22, 635), 'HANDEYE / WRIST', font=font(21, True), fill=STATE)
-    draw.text((348, 680), 'ONE RECORDED TRAJECTORY', font=font(18, True), fill=INK)
-    for line, text in enumerate(['563 control samples / 30 FPS', 'Position units: normalized servo', 'Body: -100..100 / gripper: 0..100',
-                                 'No current or torque recorded.', 'Controller / checkpoint hash:', 'not retained in this trial.']):
-        draw.text((348, 715+line*25), text, font=font(16), fill=MUTED)
-    draw.line((704, 110, 737, 110), fill=STATE, width=4)
-    draw.text((749, 96), 'Measured position', font=font(22), fill=INK)
-    dashed(draw, [(1011, 110), (1052, 110)], ACTION, 3)
-    draw.text((1067, 96), 'Sent target', font=font(22), fill=INK)
-    draw.text((704, 133), 'Position history / recorded units / shared time axis', font=font(18), fill=MUTED)
+    draw.text((32, 20), 'SO-101', font=ui_font(39, True), fill=INK)
+    draw.text((191, 32), 'Pick & place', font=ui_font(25), fill=MUTED)
+    draw.line((32, 85, 1408, 85), fill=GRID, width=1)
+    draw.text((32, 103), 'Fixed', font=ui_font(22), fill=MUTED)
+    draw.text((32, 634), 'Wrist', font=ui_font(22), fill=MUTED)
+    draw.text((716, 103), 'Joint position', font=ui_font(24, True), fill=INK)
+    draw.line((1042, 120, 1073, 120), fill=STATE, width=4)
+    draw.text((1083, 102), 'Measured', font=ui_font(22), fill=INK)
+    dashed(draw, [(1240, 120), (1271, 120)], ACTION, 3)
+    draw.text((1281, 102), 'Target', font=ui_font(22), fill=INK)
 
     curves = Image.new('RGBA', SIZE, (0, 0, 0, 0))
     line_draw = ImageDraw.Draw(curves)
-    x0, x1, chart_top, stride = 755, 1405, 165, 111
+    x0, x1, chart_top, stride = 772, 1408, 161, 109
     xs = x0 + (x1-x0) * times / (count/fps)
     chart_rows = []
     for joint, name in enumerate(JOINTS):
         top = chart_top+joint*stride
         low, high = (-110, 110) if joint < 5 else (-10, 105)
-        y0, y1 = top+31, top+100
-        draw.rounded_rectangle((692, top, 1422, top+105), radius=9, fill=PANEL)
-        draw.text((705, top+2), name.replace('_', ' '), font=font(24, True), fill=INK)
+        y0, y1 = top+37, top+94
+        draw.text((716, top), name.replace('_', ' ').capitalize(), font=ui_font(23), fill=INK)
         for value in ([-100, 0, 100] if joint < 5 else [0, 50, 100]):
             y = y1-(value-low)/(high-low)*(y1-y0)
             draw.line((x0, y, x1, y), fill=GRID, width=1)
-            draw.text((x0-9, y), str(value), font=font(14), fill=MUTED, anchor='rm')
+            if joint in [0, 5]:
+                draw.text((x0-12, y), str(value), font=ui_font(18), fill=MUTED, anchor='rm')
         for tick in [0, 5, 10, 15]:
             x = x0+(x1-x0)*tick/(count/fps)
             draw.line((x, y0, x, y1), fill=GRID, width=1)
         sy = y1-(state[:, joint]-low)/(high-low)*(y1-y0)
         ay = y1-(action[:, joint]-low)/(high-low)*(y1-y0)
-        line_draw.line(list(zip(xs, sy)), fill=STATE, width=3)
-        dashed(line_draw, list(zip(xs, ay)), ACTION, 2)
+        line_draw.line(list(zip(xs, sy)), fill=STATE, width=4)
+        dashed(line_draw, list(zip(xs, ay)), ACTION, 3)
         chart_rows.append((top, y0, y1, sy, ay))
     for tick in [0, 5, 10, 15]:
-        draw.text((x0+(x1-x0)*tick/(count/fps), 841), f'{tick} s', font=font(18), fill=MUTED, anchor='mt')
-    draw.text((1405, 841), '18.77 s', font=font(18), fill=MUTED, anchor='rt')
-    draw.text((22, 914), 'Recorded frames + Parquet samples; paired by timestamps / frame index. Hardware exposure sync not measured.',
-              font=font(16), fill=MUTED)
+        draw.text((x0+(x1-x0)*tick/(count/fps), 838), str(tick), font=ui_font(21), fill=MUTED, anchor='mt')
+    draw.text((1408, 838), 's', font=ui_font(21), fill=MUTED, anchor='rt')
     output = media / 'deployment-trial06-telemetry.mp4'
     with ExitStack() as stack:
         containers = [stack.enter_context(av.open(str(path))) for path in videos]
@@ -170,26 +174,26 @@ def main():
         for i in range(count):
             canvas = base.copy()
             fixed, wrist = next(readers[0]), next(readers[1], None)
-            canvas.paste(fixed.to_image(), (22, 145))
+            canvas.paste(fixed.to_image(), (32, 140))
             if wrist is not None:
-                canvas.paste(wrist.to_image().resize((304, 228), Image.Resampling.LANCZOS), (22, 665))
+                canvas.paste(wrist.to_image().resize((288, 216), Image.Resampling.LANCZOS), (32, 672))
             else:
                 d = ImageDraw.Draw(canvas)
-                d.rectangle((22, 665, 326, 893), fill=PANEL)
-                d.text((174, 756), 'HANDEYE ENDED', font=font(24, True), fill=INK, anchor='mm')
-                d.text((174, 795), 'No frames after 14.20 s', font=font(18), fill=MUTED, anchor='mm')
+                d.rectangle((32, 672, 320, 888), fill=PANEL)
+                d.text((176, 763), 'Recording ended', font=ui_font(25), fill=INK, anchor='mm')
+                d.text((176, 801), '14.20 s', font=ui_font(22), fill=MUTED, anchor='mm')
             right = min(x1+1, int(math.ceil(xs[i]))+1)
-            canvas.paste(curves.crop((x0, chart_top, right, 830)), (x0, chart_top),
-                         curves.crop((x0, chart_top, right, 830)))
+            canvas.paste(curves.crop((x0, chart_top, right, 810)), (x0, chart_top),
+                         curves.crop((x0, chart_top, right, 810)))
             d = ImageDraw.Draw(canvas)
-            d.text((1416, 57), f'{times[i]:05.2f} s  /  frame {i:03d}', font=font(22), fill=INK, anchor='ra')
+            d.text((1408, 34), f'{times[i]:05.2f} / {count/fps:.2f} s',
+                   font=ui_font(25), fill=MUTED, anchor='ra')
             for j, (top, y0, y1, sy, ay) in enumerate(chart_rows):
                 x = float(xs[i])
-                d.line((x, y0, x, y1), fill='#edf6fa', width=1)
+                d.line((x, y0, x, y1), fill='#919a97', width=1)
                 for y, color in [(float(sy[i]), STATE), (float(ay[i]), ACTION)]:
                     d.ellipse((x-4, y-4, x+4, y+4), fill=color)
-                d.text((1250, top+4), f'{state[i,j]:6.1f}', font=font(20, True), fill=STATE, anchor='ra')
-                d.text((1407, top+4), f'{action[i,j]:6.1f}', font=font(20, True), fill=ACTION, anchor='ra')
+                d.text((1408, top), f'{state[i,j]:.1f}', font=ui_font(24), fill=STATE, anchor='ra')
             if args.stills_dir and i in [0, 241, 321, 426, 562]:
                 args.stills_dir.mkdir(parents=True, exist_ok=True)
                 canvas.save(args.stills_dir / f'telemetry-frame-{i:03d}.png')
@@ -202,7 +206,7 @@ def main():
 
     import imageio_ffmpeg
     gif = output.with_suffix('.gif')
-    filters = ('[0:v]fps=10,scale=960:624:flags=lanczos,split[a][b];'
+    filters = ('[0:v]fps=10,scale=960:600:flags=lanczos,split[a][b];'
                '[a]palettegen=max_colors=96:stats_mode=diff[p];'
                '[b][p]paletteuse=dither=bayer:bayer_scale=4')
     subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), '-hide_banner', '-loglevel', 'error', '-y',
@@ -214,7 +218,11 @@ def main():
                       current_or_torque_recorded=False, time_cuts=False, playback_speed=1,
                       controller='Unverified; 050000 in directory name, no controller or checkpoint hash.',
                       csv_sha256=digest(csv_path), csv_rows=count,
-                      camera_transforms='Fixed: native 640x480; wrist: resized to 304x228; no crop or retouching.',
+                      camera_transforms='Fixed: native 640x480; wrist: resized to 288x216; no crop or retouching.',
+                      presentation=dict(layout='Light neutral canvas; six unboxed position plots; one measured value per joint.',
+                                        visible_labels=['SO-101', 'Pick & place', 'Fixed', 'Wrist',
+                                                        'Joint position', 'Measured', 'Target', 'elapsed / duration'],
+                                        technical_notes='Source, units, recording completeness and controller provenance remain in the companion documentation.'),
                       missing_handeye_frames=count-alignment['cameras']['handeye']['decoded_frames'])
     (result_dir/'trial06.json').write_text(json.dumps(provenance, indent=2)+'\n', encoding='utf-8')
     manifest_path = ROOT/'results/so101/media_manifest.json'
@@ -222,7 +230,8 @@ def main():
     for path in [output, gif]:
         asset = path.relative_to(ROOT).as_posix()
         row = dict(asset=asset, sha256=digest(path), bytes=path.stat().st_size, sources=sources,
-                   transformations='Synchronized real camera playback and six measured/sent-position histories; no future trace revealed. '
+                   transformations='Minimal light layout with real camera playback and six measured/sent-position histories; '
+                                   'one measured value per joint; source details in companion docs; no future trace revealed. '
                                    'Entire recorded interval; missing wrist interval replaced by an explicit card.',
                    control_label='Deployment recording; model identity and autonomous-control provenance unverified',
                    playback_speed=1, time_cuts=False, checkpoint_identifier=provenance['controller'],
