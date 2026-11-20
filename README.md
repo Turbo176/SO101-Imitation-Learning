@@ -1,4 +1,4 @@
-<h1 align="center">SO-101 Imitation Learning</h1>
+<h1 align="center">🤖 SO-101 Imitation Learning</h1>
 <p align="center"><strong>Real-to-real · demonstrations, ACT / SmolVLA training, and robot deployment</strong></p>
 <p align="center">
   <img src="media/so101/badge-lerobot.svg" alt="LeRobot 0.3.4">
@@ -13,22 +13,22 @@ I used an SO-101 leader–follower pair and two RGB cameras to collect demonstra
 
 ACT and SmolVLA were trained to **50,000 steps** on a remote GPU server. This repository contains the code, configurations, training logs, diagnostic results and selected robot recordings. ACT training and the deployment videos date to **September 29, 2026**; SmolVLA training and analysis date to **October 7–13, 2026**. The source was published in November. [Project history](docs/so101/provenance.md).
 
-<p align="center"><strong>Contents</strong></p>
+<p align="center"><strong>🧭 Contents</strong></p>
 <p align="center">
-  <a href="#demo">Demo</a> &nbsp;·&nbsp;
-  <a href="#features">Features</a> &nbsp;·&nbsp;
-  <a href="#architecture">Architecture</a>
+  <a href="#demo"><strong>🎬&nbsp;Demo</strong></a> &nbsp;·&nbsp;
+  <a href="#features"><strong>✨&nbsp;Features</strong></a> &nbsp;·&nbsp;
+  <a href="#architecture"><strong>🧩&nbsp;Architecture</strong></a>
 </p>
 <p align="center">
-  <a href="#collection">Data collection</a> &nbsp;·&nbsp;
-  <a href="#training">Training &amp; deployment</a> &nbsp;·&nbsp;
-  <a href="#remote-training">Remote training</a>
+  <a href="#collection"><strong>🎮&nbsp;Data&nbsp;collection</strong></a> &nbsp;·&nbsp;
+  <a href="#training"><strong>🧠&nbsp;Training&nbsp;&amp;&nbsp;deployment</strong></a> &nbsp;·&nbsp;
+  <a href="#remote-training"><strong>☁️&nbsp;Remote&nbsp;training</strong></a>
 </p>
 <p align="center">
-  <a href="#results">Results</a> &nbsp;·&nbsp;
-  <a href="#quickstart">Quick start</a> &nbsp;·&nbsp;
-  <a href="#structure">Project structure</a> &nbsp;·&nbsp;
-  <a href="#credits">Citation &amp; license</a>
+  <a href="#results"><strong>📈&nbsp;Results</strong></a> &nbsp;·&nbsp;
+  <a href="#quickstart"><strong>🚀&nbsp;Quick&nbsp;start</strong></a> &nbsp;·&nbsp;
+  <a href="#structure"><strong>📂&nbsp;Project&nbsp;structure</strong></a> &nbsp;·&nbsp;
+  <a href="#credits"><strong>📚&nbsp;Citation&nbsp;&amp;&nbsp;license</strong></a>
 </p>
 
 <a id="demo"></a>
@@ -48,7 +48,7 @@ The old trial directory is named `050000`, but its command, model family and che
 <p align="center"><img src="media/so101/task-sequence.webp" width="920" alt="Trial06 source frames: approach, lift, lower and release"></p>
 
 <details>
-<summary>More views and recordings</summary>
+<summary>🎥 More views and recordings</summary>
 
 <p align="center">
   <a href="media/so101/deployment-trial06-two-view.mp4?raw=true"><img src="media/so101/deployment-trial06-two-view.gif" width="800" alt="Trial06 with equal-size fixed and wrist views"></a>
@@ -67,7 +67,7 @@ The old trial directory is named `050000`, but its command, model family and che
 </details>
 
 <a id="features"></a>
-## Main features
+## ✨ Main features
 
 - Leader–follower demonstration collection with two camera streams and six-joint state/action recording.
 - ACT with a ResNet-18 backbone and 100-step chunks; SmolVLA with image/state/task input and 50-step chunks.
@@ -76,7 +76,7 @@ The old trial directory is named `050000`, but its command, model family and che
 - Training curves, saved predictions and scripts to recompute the included metrics.
 
 <a id="architecture"></a>
-## System architecture
+## 🧩 System architecture
 
 <p align="center"><img src="media/so101/architecture.svg" width="920" alt="Demonstration collection, ACT/SmolVLA training and SO-101 deployment"></p>
 
@@ -97,7 +97,7 @@ Camera assignment, joint order, calibration and model normalization must agree a
 The fixed view covers the workspace and target. The handeye view provides a closer view of the object during grasping.
 
 <a id="collection"></a>
-## Data collection
+## 🎮 Data collection
 
 The human moves the leader arm while the follower executes and LeRobot records the images, positions and targets actually sent to the motors.
 
@@ -120,7 +120,7 @@ The human moves the leader arm while the follower executes and LeRobot records t
 All Parquet files and video frame counts pass the [dataset audit](results/so101/dataset/audit.json). All 55 episodes were used for training. The complete dataset is excluded from Git. [Setup, calibration and collection commands](docs/so101/setup.md).
 
 <a id="training"></a>
-## Training and deployment
+## 🧠 Training and deployment
 
 | Setting | ACT | SmolVLA |
 | --- | --- | --- |
@@ -134,7 +134,7 @@ All Parquet files and video frame counts pass the [dataset audit](results/so101/
 | Task text | Not used | Recorded instruction |
 
 <a id="remote-training"></a>
-### Remote GPU training
+### ☁️ Remote GPU training
 
 Collect on the robot computer, transfer the complete dataset, train on the server and bring back the numbered checkpoint. The [training guide](docs/so101/training.md) covers transfer, environment setup, pretrained assets, tmux, logs and resume.
 
@@ -162,7 +162,7 @@ These diagnostics compare 50-step predictions against recorded actions at 15 obs
 The observations were seen during training. These scores measure action fitting, not physical success or generalization; the two loss objectives are plotted separately. [Methods and result files](docs/so101/evaluation.md).
 
 <details>
-<summary>Six-joint predictions</summary>
+<summary>📊 Six-joint predictions</summary>
 
 <p align="center"><img src="media/so101/action-chunks.svg" width="920" alt="ACT/SmolVLA predictions and recorded targets for all six joints"></p>
 
@@ -181,7 +181,7 @@ The middle saved observation, from episode26 halfway through the episode. Both m
 The old recordings lack a complete attempt log and per-trial controller identifiers, so I have left the success rate blank. [Trial inventory and evaluation protocol](docs/so101/evaluation.md#deployment-recordings).
 
 <details>
-<summary>Failure recording</summary>
+<summary>⚠️ Failure recording</summary>
 
 <p align="center">
   <a href="media/so101/deployment-trial03-two-view.mp4?raw=true"><img src="media/so101/deployment-trial03-two-view.gif" width="800" alt="Trial03: the box tips and no placement is completed"></a>
@@ -193,7 +193,7 @@ The old recordings lack a complete attempt log and per-trial controller identifi
 </details>
 
 <a id="quickstart"></a>
-## Quick start
+## 🚀 Quick start
 
 Use Python 3.10 and run from the repository root. Select a PyTorch wheel supported by your driver:
 
@@ -215,7 +215,7 @@ python scripts/so101/verify_results.py
 | [Project history](docs/so101/provenance.md) | Dates, local changes and upstream attribution |
 
 <a id="structure"></a>
-## Project structure
+## 📂 Project structure
 
 ```text
 src/lerobot/       LeRobot source with local hardware changes
@@ -229,7 +229,7 @@ docs/so101/       Five guides linked above
 The upstream examples, tests and benchmarks remain available. Generated outputs, environments, full datasets, weights and calibration files are ignored by Git.
 
 <a id="credits"></a>
-## Citation and license
+## 📚 Citation and license
 
 Built on [Hugging Face LeRobot](https://github.com/huggingface/lerobot), [ACT / ALOHA](https://tonyzhaozh.github.io/aloha/) and [SmolVLA](https://huggingface.co/papers/2506.01844). The learning framework and model architectures come from upstream. This project adds the SO-101 experiment, hardware integration changes, deployment tools and recorded results.
 
