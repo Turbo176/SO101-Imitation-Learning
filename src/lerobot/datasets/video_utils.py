@@ -85,7 +85,8 @@ def decode_video_frames_torchvision(
     (note that you need to compile against ffmpeg<4.3)
 
     While both use cpu, "video_reader" is supposedly faster than "pyav" but requires additional setup.
-    For more info on video decoding, see `benchmark/video/README.md`
+    For the original decoding benchmark, see:
+    https://github.com/huggingface/lerobot/blob/882c80d446a63a44868c67ae535467af32ce0e80/benchmarks/video/README.md
 
     See torchvision doc for more info on these two backends:
     https://pytorch.org/vision/0.18/index.html?highlight=backend#torchvision.set_video_backend
@@ -255,7 +256,7 @@ def encode_video_frames(
     log_level: int | None = av.logging.ERROR,
     overwrite: bool = False,
 ) -> None:
-    """More info on ffmpeg arguments tuning on `benchmark/video/README.md`"""
+    """Use `benchmarks/video/run_video_benchmark.py` to compare ffmpeg encoding settings."""
     # Check encoder availability
     if vcodec not in ["h264", "hevc", "libsvtav1"]:
         raise ValueError(f"Unsupported video codec: {vcodec}. Supported codecs are: h264, hevc, libsvtav1.")

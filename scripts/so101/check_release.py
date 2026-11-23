@@ -20,7 +20,8 @@ def anchors(path):
 
 def main():
     failures, links = [], 0
-    paths = [ROOT / 'README.md', *sorted((ROOT / 'docs/so101').glob('*.md')),
+    readmes = sorted(ROOT.glob('README*.md'))
+    paths = [*readmes, *sorted((ROOT / 'docs/so101').glob('*.md')),
              ROOT / '.github/PULL_REQUEST_TEMPLATE.md']
     for path in paths:
         text = path.read_text(encoding='utf-8')
@@ -47,7 +48,7 @@ def main():
     for entry in json.loads((ROOT / 'results/so101/media_manifest.json').read_text(encoding='utf-8')):
         if not (ROOT / entry['asset']).is_file():
             failures.append(f'Missing media asset: {entry["asset"]}')
-    for path in [ROOT / 'README.md', *(ROOT / 'scripts/so101').glob('*.py')]:
+    for path in [*readmes, *(ROOT / 'scripts/so101').glob('*.py')]:
         if re.search(r'(?:gh[pousr]_[A-Za-z0-9]{20,}|hf_[A-Za-z0-9]{20,}|-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY-----)', path.read_text(encoding='utf-8')):
             failures.append(f'Credential-shaped text: {path.relative_to(ROOT)}')
     print(json.dumps({'ok': not failures, 'documents': len(paths), 'local_links': links, 'failures': failures}, indent=2))

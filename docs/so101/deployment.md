@@ -1,6 +1,7 @@
 # Deployment
 
-## Configuration contract
+<a id="configuration-contract"></a>
+## Robot and model settings
 
 | Item | Required setting |
 | --- | --- |

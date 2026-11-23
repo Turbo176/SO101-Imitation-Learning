@@ -10,11 +10,9 @@ This project is based on LeRobot 0.3.4 at commit `882c80d446a63a44868c67ae535467
 | September 29, 2026 | ACT loss CSV, checkpoint state and deployment videos |
 | October 7, 2026 | SmolVLA training CSV with UTC timestamps, through 50,000 steps |
 | October 7–13, 2026 | Offline inference tools, saved predictions and analysis exports |
-| November 19, 2026 | Public source release, English guides and video layouts |
+| November 19, 2026 | Public source release, setup/training/deployment guides and video layouts |
 
 ACT terminal timestamps have no explicit timezone. Video/file modification times support the timeline but do not independently authenticate capture dates. Source names, hashes and preserved times are in [source_artifacts.json](../../results/so101/source_artifacts.json) and [source_snapshot_dates.json](../../results/so101/source_snapshot_dates.json).
-
-The experiment predates the public release. The personal experiment changes had no original Git commits; the public snapshot uses its actual publication date. GitHub's file list follows Git commits, not old filesystem dates. The full original checkout history is backed up locally, and upstream authorship is retained in the source and [NOTICE](../../NOTICE).
 
 ## Changes in this repository
 

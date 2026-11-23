@@ -1,5 +1,6 @@
 <h1 align="center">🤖 SO-101 Imitation Learning</h1>
 <p align="center"><strong>Real-to-real · demonstrations, ACT / SmolVLA training, and robot deployment</strong></p>
+<p align="center"><strong>English</strong> · <a href="README.zh-CN.md">简体中文</a></p>
 <p align="center">
   <img src="media/so101/badge-lerobot.svg" alt="LeRobot 0.3.4">
   <img src="media/so101/badge-python.svg" alt="Python 3.10">
@@ -43,7 +44,7 @@ ACT and SmolVLA were trained to **50,000 steps** on a remote GPU server. This re
 
 The fixed camera shows the pick-and-place while the wrist view follows the gripper. Solid curves show measured joint positions; dashed curves show sent targets. These are normalized servo positions; current and torque were not recorded. The wrist recording ends at 14.20 s, and an ending card marks the missing interval.
 
-The old trial directory is named `050000`, but its command, model family and checkpoint hash were not saved. I have kept the label **deployment recording** until those details can be confirmed. [Recording details](docs/so101/evaluation.md#video-and-joint-motion).
+The trial directory is named `050000`, but the command, model family and checkpoint hash were not saved. The clip is labeled **deployment recording** because its controller cannot be confirmed. [Recording details](docs/so101/evaluation.md#video-and-joint-motion).
 
 <p align="center"><img src="media/so101/task-sequence.webp" width="920" alt="Trial06 source frames: approach, lift, lower and release"></p>
 
@@ -90,7 +91,7 @@ The old trial directory is named `050000`, but its command, model family and che
 | Training | Remote Linux GPU server, batch size 4, seed 1000 |
 | Local inference checks | Windows, Python 3.10, PyTorch 2.7.1 + CUDA 12.8, GTX 1650 Ti |
 
-Camera assignment, joint order, calibration and model normalization must agree at deployment. See the [configuration contract](docs/so101/deployment.md#configuration-contract).
+Camera assignment, joint order, calibration and model normalization must agree at deployment. See the [robot and model settings](docs/so101/deployment.md#configuration-contract).
 
 <p align="center"><img src="media/so101/camera-inputs.webp" width="920" alt="Actual fixed and handeye inputs from demonstration54"></p>
 
@@ -178,7 +179,7 @@ The middle saved observation, from episode26 halfway through the episode. Both m
 | Observed problems | Box tips, missed pickup, incomplete camera saves |
 | Held-out split | None |
 
-The old recordings lack a complete attempt log and per-trial controller identifiers, so I have left the success rate blank. [Trial inventory and evaluation protocol](docs/so101/evaluation.md#deployment-recordings).
+The recordings lack a complete attempt log and per-trial controller identifiers, so the success rate is left blank. [Trial inventory and evaluation protocol](docs/so101/evaluation.md#deployment-recordings).
 
 <details>
 <summary>⚠️ Failure recording</summary>

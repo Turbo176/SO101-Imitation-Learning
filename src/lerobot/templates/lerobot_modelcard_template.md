@@ -50,7 +50,7 @@ lerobot-train \
   --output_dir=outputs/train/<desired_policy_repo_id> \
   --job_name=lerobot_training \
   --policy.device=cuda \
-  --policy.repo_id=${HF_USER}/<desired_policy_repo_id>
+  --policy.repo_id=${HF_USER}/<desired_policy_repo_id> \
   --wandb.enable=true
 ```
 
@@ -61,9 +61,10 @@ _Writes checkpoints to `outputs/train/<desired_policy_repo_id>/checkpoints/`._
 ```bash
 lerobot-record \
   --robot.type=so100_follower \
+  --robot.port=FOLLOWER_PORT \
   --dataset.repo_id=<hf_user>/eval_<dataset> \
   --policy.path=<hf_user>/<desired_policy_repo_id> \
-  --episodes=10
+  --dataset.num_episodes=10
 ```
 
 Prefix the dataset repo with **eval\_** and supply `--policy.path` pointing to a local or hub checkpoint.

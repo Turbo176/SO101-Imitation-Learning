@@ -16,7 +16,7 @@
 """Assess the performance of video decoding in various configurations.
 
 This script will benchmark different video encoding and decoding parameters.
-See the provided README.md or run `python benchmark/video/run_video_benchmark.py --help` for usage info.
+Run `python benchmarks/video/run_video_benchmark.py --help` for usage info.
 """
 
 import argparse
