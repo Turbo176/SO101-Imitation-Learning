@@ -70,7 +70,12 @@
   "current_or_torque_recorded": false,
   "time_cuts": false,
   "playback_speed": 1,
-  "controller": "Unverified; 050000 in directory name, no controller or checkpoint hash.",
+  "controller": "SmolVLA",
+  "policy_type": "smolvla",
+  "control_mode": "model_inference",
+  "policy_identity_source": "maintainer_confirmation",
+  "checkpoint_identifier": "050000 (recording directory)",
+  "checkpoint_sha256": null,
   "csv_sha256": "ef8d5dd19e019ac43bdcbdcea8fefd5df005ebf79fdd85d59c76ee9e0ff3366f",
   "csv_rows": 563,
   "camera_transforms": "Fixed: native 640x480; wrist: resized to 288x216; no crop or retouching.",
@@ -78,7 +83,7 @@
     "layout": "Light neutral canvas; six unboxed position plots; one measured value per joint.",
     "visible_labels": [
       "SO-101",
-      "Pick & place",
+      "SmolVLA \u00b7 Pick & place",
       "Fixed",
       "Wrist",
       "Joint position",
@@ -86,7 +91,7 @@
       "Target",
       "elapsed / duration"
     ],
-    "technical_notes": "Source, units, recording completeness and controller provenance remain in the companion documentation."
+    "technical_notes": "Sources, position units and recording completeness are documented in the companion guide."
   },
   "missing_handeye_frames": 137
 }

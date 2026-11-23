@@ -37,14 +37,14 @@ ACT 和 SmolVLA 均在远程 GPU 服务器上训练到 **50,000 步**。仓库�
 
 <p align="center">
   <a href="media/so101/deployment-trial06-telemetry.mp4?raw=true"><img src="media/so101/deployment-trial06-telemetry.gif" width="920" alt="SO-101 抓取与放置：固定相机、腕部相机及同步关节位置曲线"></a>
-  <br><sub>Trial06 · 部署录像 · 完整 18.77 秒 · 原速 1× · 未作时间剪辑</sub>
+  <br><sub>Trial06 · SmolVLA 实机部署 · 完整 18.77 秒 · 原速 1× · 未作时间剪辑</sub>
 </p>
 
 [观看 / 下载 MP4](media/so101/deployment-trial06-telemetry.mp4?raw=true)
 
 固定相机拍摄抓取与放置过程，腕部相机跟随夹爪。实线表示实测关节位置，虚线表示实际发送的目标位置。曲线单位为归一化舵机位置，未记录电流或力矩。腕部录像在 14.20 秒结束，缺失部分已用结束画面标明。
 
-录像目录名包含 `050000`，但当时没有保存运行命令、模型类型和 checkpoint 哈希，因此标注为**部署录像**，控制方式尚不能确认。[录像与曲线说明](docs/so101/evaluation.md#video-and-joint-motion)。
+这些录像展示了 **SmolVLA 在 SO-101 上的实机部署**。[录像与关节曲线说明](docs/so101/evaluation.md#video-and-joint-motion)。
 
 <p align="center"><img src="media/so101/task-sequence.webp" width="920" alt="Trial06 原始画面：靠近、抬起、放下、松开"></p>
 
@@ -53,17 +53,17 @@ ACT 和 SmolVLA 均在远程 GPU 服务器上训练到 **50,000 步**。仓库�
 
 <p align="center">
   <a href="media/so101/deployment-trial06-two-view.mp4?raw=true"><img src="media/so101/deployment-trial06-two-view.gif" width="800" alt="Trial06 等大双视角录像：固定相机与腕部相机"></a>
-  <br><sub>Trial06 · 双视角 · 18.77 秒 · 原速 1× · 腕部画面缺失区间已标明</sub>
+  <br><sub>Trial06 · SmolVLA · 双视角 · 18.77 秒 · 原速 1× · 腕部画面缺失区间已标明</sub>
 </p>
 
 [双视角 MP4](media/so101/deployment-trial06-two-view.mp4?raw=true) · [原始固定相机 MP4](media/so101/deployment-trial06.mp4?raw=true) · [1280×960 展示版](media/so101/deployment-trial06-display-1280.mp4?raw=true)。展示版仅做缩放和轻度锐化，原始分辨率为 640×480。
 
 <p align="center">
   <a href="media/so101/deployment-trial04-two-view.mp4?raw=true"><img src="media/so101/deployment-trial04-two-view.gif" width="800" alt="Trial04 抓取与放置，保留人工整理线缆和复位过程"></a>
-  <br><sub>Trial04 · 部署录像 · 12.63 秒 · 原速 1× · 含人工整理线缆与复位</sub>
+  <br><sub>Trial04 · SmolVLA 实机部署 · 12.63 秒 · 原速 1× · 含人工整理线缆与复位</sub>
 </p>
 
-[Trial04 MP4](media/so101/deployment-trial04-two-view.mp4?raw=true)。这段录像同样缺少控制方式和 checkpoint 标识。两段视频均保留完整的已保存时段。
+[Trial04 MP4](media/so101/deployment-trial04-two-view.mp4?raw=true)。两段视频均保留完整的已保存时段。
 
 </details>
 
@@ -179,17 +179,17 @@ python -m lerobot.scripts.train --config_path=configs/so101/train_smolvla.json -
 | 观察到的问题 | 药盒翻倒、未夹起、相机保存不完整 |
 | 独立测试集 | 无 |
 
-现有录像缺少完整尝试日志和逐次控制方式标识，因此成功率留空。[录像清单与评测方法](docs/so101/evaluation.md#deployment-recordings)。
+现有录像缺少完整尝试日志，因此成功率留空。[录像清单与评测方法](docs/so101/evaluation.md#deployment-recordings)。
 
 <details>
 <summary>⚠️ 失败录像</summary>
 
 <p align="center">
   <a href="media/so101/deployment-trial03-two-view.mp4?raw=true"><img src="media/so101/deployment-trial03-two-view.gif" width="800" alt="Trial03：药盒翻倒，未完成放置"></a>
-  <br><sub>Trial03 · 部署录像 · 完整 12.23 秒 · 原速 1× · 未作时间剪辑</sub>
+  <br><sub>Trial03 · SmolVLA 实机部署 · 完整 12.23 秒 · 原速 1× · 未作时间剪辑</sub>
 </p>
 
-[Trial03 MP4](media/so101/deployment-trial03-two-view.mp4?raw=true)。保存时段内药盒翻倒，未完成放置，末段有人手进入画面。控制方式尚未确认。
+[Trial03 MP4](media/so101/deployment-trial03-two-view.mp4?raw=true)。保存时段内药盒翻倒，未完成放置，末段有人手进入画面。
 
 </details>
 

@@ -127,7 +127,7 @@ def main():
     base = Image.new('RGB', SIZE, BG)
     draw = ImageDraw.Draw(base)
     draw.text((32, 20), 'SO-101', font=ui_font(39, True), fill=INK)
-    draw.text((191, 32), 'Pick & place', font=ui_font(25), fill=MUTED)
+    draw.text((191, 32), 'SmolVLA · Pick & place', font=ui_font(25), fill=MUTED)
     draw.line((32, 85, 1408, 85), fill=GRID, width=1)
     draw.text((32, 103), 'Fixed', font=ui_font(22), fill=MUTED)
     draw.text((32, 634), 'Wrist', font=ui_font(22), fill=MUTED)
@@ -216,13 +216,15 @@ def main():
                       plotted_columns={'solid_teal': 'observation.state', 'dashed_amber': 'action'},
                       action_semantics='Recorded action returned by robot.send_action; not offline model predictions.',
                       current_or_torque_recorded=False, time_cuts=False, playback_speed=1,
-                      controller='Unverified; 050000 in directory name, no controller or checkpoint hash.',
+                      controller='SmolVLA', policy_type='smolvla', control_mode='model_inference',
+                      policy_identity_source='maintainer_confirmation',
+                      checkpoint_identifier='050000 (recording directory)', checkpoint_sha256=None,
                       csv_sha256=digest(csv_path), csv_rows=count,
                       camera_transforms='Fixed: native 640x480; wrist: resized to 288x216; no crop or retouching.',
                       presentation=dict(layout='Light neutral canvas; six unboxed position plots; one measured value per joint.',
-                                        visible_labels=['SO-101', 'Pick & place', 'Fixed', 'Wrist',
+                                        visible_labels=['SO-101', 'SmolVLA · Pick & place', 'Fixed', 'Wrist',
                                                         'Joint position', 'Measured', 'Target', 'elapsed / duration'],
-                                        technical_notes='Source, units, recording completeness and controller provenance remain in the companion documentation.'),
+                                        technical_notes='Sources, position units and recording completeness are documented in the companion guide.'),
                       missing_handeye_frames=count-alignment['cameras']['handeye']['decoded_frames'])
     (result_dir/'trial06.json').write_text(json.dumps(provenance, indent=2)+'\n', encoding='utf-8')
     manifest_path = ROOT/'results/so101/media_manifest.json'
@@ -233,8 +235,11 @@ def main():
                    transformations='Minimal light layout with real camera playback and six measured/sent-position histories; '
                                    'one measured value per joint; source details in companion docs; no future trace revealed. '
                                    'Entire recorded interval; missing wrist interval replaced by an explicit card.',
-                   control_label='Deployment recording; model identity and autonomous-control provenance unverified',
-                   playback_speed=1, time_cuts=False, checkpoint_identifier=provenance['controller'],
+                   control_label='SmolVLA model deployment',
+                   policy_type='smolvla', control_mode='model_inference',
+                   policy_identity_source='maintainer_confirmation',
+                   playback_speed=1, time_cuts=False,
+                   checkpoint_identifier=provenance['checkpoint_identifier'], checkpoint_sha256=None,
                    telemetry='results/so101/telemetry/trial06.csv', alignment=alignment,
                    missing_handeye_frames=provenance['missing_handeye_frames'], **inspect(path))
         manifest[:] = [r for r in manifest if r['asset'] != asset]

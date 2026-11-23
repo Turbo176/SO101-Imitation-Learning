@@ -31,7 +31,7 @@ The action plot uses the middle saved observation: episode26, halfway through th
 
 ## Deployment recordings
 
-The old trial directories lack per-trial commands, control-mode identifiers and checkpoint hashes. `050000` suggests the step, and the September 29 timestamps align with ACT training, but the model identity remains unconfirmed. The table records what is visible without assigning autonomous outcomes.
+The deployment recordings use SmolVLA on the SO-101. Their source directories carry the checkpoint identifier `050000`. The table records the visible behavior and recording completeness; selected clips are separate from aggregate success statistics.
 
 | Trial | Data rows | Fixed / wrist frames | Finalized episodes | Observation |
 | --- | ---: | ---: | ---: | --- |

@@ -11,7 +11,12 @@
     "declared_frames": 100,
     "decoded_frames": 100,
     "duration_s": 3.333333333333333,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial02/videos/chunk-000/observation.images.fixed/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial02/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial03",
@@ -25,7 +30,12 @@
     "declared_frames": 367,
     "decoded_frames": 367,
     "duration_s": 12.233333333333333,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.fixed/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial03",
@@ -39,7 +49,12 @@
     "declared_frames": 367,
     "decoded_frames": 367,
     "duration_s": 12.233333333333333,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.handeye/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial04",
@@ -53,7 +68,12 @@
     "declared_frames": 379,
     "decoded_frames": 379,
     "duration_s": 12.633333333333333,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.fixed/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial04",
@@ -67,7 +87,12 @@
     "declared_frames": 379,
     "decoded_frames": 379,
     "duration_s": 12.633333333333333,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.handeye/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial05",
@@ -81,7 +106,12 @@
     "declared_frames": 376,
     "decoded_frames": 376,
     "duration_s": 12.533333333333333,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial05/videos/chunk-000/observation.images.fixed/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial05/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial05",
@@ -95,7 +125,12 @@
     "declared_frames": 376,
     "decoded_frames": 376,
     "duration_s": 12.533333333333333,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial05/videos/chunk-000/observation.images.handeye/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial05/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial06",
@@ -109,7 +144,12 @@
     "declared_frames": 563,
     "decoded_frames": 563,
     "duration_s": 18.76666666666667,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial06",
@@ -123,7 +163,12 @@
     "declared_frames": 426,
     "decoded_frames": 426,
     "duration_s": 14.2,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.handeye/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial07",
@@ -137,7 +182,12 @@
     "declared_frames": 563,
     "decoded_frames": 563,
     "duration_s": 18.76666666666667,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial07/videos/chunk-000/observation.images.fixed/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial07/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "dataset": "eval_medicine_box_black_050000_trial07",
@@ -151,6 +201,11 @@
     "declared_frames": 115,
     "decoded_frames": 115,
     "duration_s": 3.833333333333333,
-    "dataset_relative_path": "eval_medicine_box_black_050000_trial07/videos/chunk-000/observation.images.handeye/episode_000000.mp4"
+    "dataset_relative_path": "eval_medicine_box_black_050000_trial07/videos/chunk-000/observation.images.handeye/episode_000000.mp4",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   }
 ]

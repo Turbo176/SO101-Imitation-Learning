@@ -68,6 +68,10 @@ def main():
                    sources=sources, transformations=description,
                    control_label=label, playback_speed=1, time_cuts=False)
         row.update(extra)
+        if any(s['dataset_relative_path'].startswith('eval_medicine_box_black_050000_') for s in sources):
+            row.update(policy_type='smolvla', control_mode='model_inference',
+                       policy_identity_source='maintainer_confirmation',
+                       checkpoint_identifier='050000 (recording directory)', checkpoint_sha256=None)
         if path.suffix in ['.mp4', '.gif']:
             row.update(inspect(path))
         manifest[:] = [r for r in manifest if r['asset'] != asset]
@@ -115,7 +119,7 @@ def main():
                         draw.text((x + 320, 322),
                                   f'No frames after {sources[1]["decoded_frames"] / 30:.2f} s',
                                   font=font(23), fill='#b5cbd5', anchor='mm')
-                footer = 'HUMAN TELEOPERATION  |  training demonstration' if episode else 'DEPLOYMENT RECORDING  |  controller / checkpoint hash not logged'
+                footer = 'HUMAN TELEOPERATION  |  training demonstration' if episode else 'SMOLVLA  |  model deployment'
                 draw.text((18, 570), footer, font=font(19), fill='#c4d6e0')
                 draw.text((1260, 570), '1x playback  |  full interval', font=font(19), fill='#c4d6e0', anchor='ra')
                 video_frame = av.VideoFrame.from_image(canvas)
@@ -124,7 +128,7 @@ def main():
                     out.mux(packet)
             for packet in stream.encode():
                 out.mux(packet)
-        checkpoint = '050000 in source directory name; controller/hash not recorded' if not episode else None
+        checkpoint = '050000 (recording directory)' if not episode else None
         description = ('Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; '
                        'frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.')
         missing = count - sources[1]['decoded_frames']
@@ -146,7 +150,7 @@ def main():
                  ffmpeg_output_arguments=command)
         return inputs
 
-    deployment = 'Deployment recording; model identity and autonomous-control provenance unverified'
+    deployment = 'SmolVLA model deployment'
     hero = pair('deployment-trial06-two-view', 'eval_medicine_box_black_050000_trial06',
                 'TRIAL 06  /  REAL-ROBOT PICK AND PLACE', deployment)
     pair('deployment-trial04-two-view', 'eval_medicine_box_black_050000_trial04',
@@ -172,7 +176,7 @@ def main():
     image = Image.new('RGB', (1360, 388), '#f0f5f8')
     draw = ImageDraw.Draw(image)
     draw.text((20, 15), 'ONE RECORDED TRAJECTORY', fill=INK, font=font(24, True))
-    draw.text((20, 49), 'Trial06 / fixed camera / selected source frames / controller identity unverified', fill=MUTED, font=font(19))
+    draw.text((20, 49), 'SmolVLA / Trial06 / fixed camera / selected source frames', fill=MUTED, font=font(19))
     for col, (idx, label) in enumerate(zip(indices, ['Approach', 'Lift', 'Lower to target', 'Released'])):
         x = 20 + col * 335
         image.paste(frames[idx].resize((315, 236), Image.Resampling.LANCZOS), (x, 88))

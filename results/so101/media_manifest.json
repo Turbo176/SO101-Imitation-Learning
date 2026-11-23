@@ -16,10 +16,10 @@
       }
     ],
     "transformations": "Native 640x480 H.264 transcode; entire source interval, no crop.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "control_label": "SmolVLA model deployment",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "checkpoint_identifier": "050000 (recording directory)",
     "ffmpeg_output_arguments": [
       "-c:v",
       "libx264",
@@ -37,7 +37,11 @@
     "fps": "30",
     "width": 640,
     "height": 480,
-    "duration_seconds": 18.766666666666666
+    "duration_seconds": 18.766666666666666,
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_sha256": null
   },
   {
     "asset": "media/so101/deployment-trial06-display-1280.mp4",
@@ -56,10 +60,10 @@
       }
     ],
     "transformations": "Lanczos upscale to 1280x960 with mild unsharp; no recovered source detail.",
-    "control_label": "Same deployment recording",
+    "control_label": "SmolVLA model deployment",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "checkpoint_identifier": "050000 (recording directory)",
     "ffmpeg_output_arguments": [
       "-vf",
       "scale=1280:960:flags=lanczos,unsharp=5:5:0.35:5:5:0",
@@ -79,7 +83,11 @@
     "fps": "30",
     "width": 1280,
     "height": 960,
-    "duration_seconds": 18.766666666666666
+    "duration_seconds": 18.766666666666666,
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_sha256": null
   },
   {
     "asset": "media/so101/deployment-trial06.gif",
@@ -98,10 +106,10 @@
       }
     ],
     "transformations": "10 FPS, 480x360 GIF preview, entire source field of view and interval; 1x playback.",
-    "control_label": "Same deployment recording",
+    "control_label": "SmolVLA model deployment",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "checkpoint_identifier": "050000 (recording directory)",
     "ffmpeg_output_arguments": [
       "-filter_complex",
       "[0:v]fps=10,scale=480:360:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4",
@@ -112,12 +120,16 @@
     "fps": "10",
     "width": 480,
     "height": 360,
-    "duration_seconds": 18.8
+    "duration_seconds": 18.8,
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_sha256": null
   },
   {
     "asset": "media/so101/deployment-trial06-two-view.mp4",
-    "sha256": "7bf2a2fbb9330582ba89b0797f7d4386e900b929b9355d0c30a13bcff1f60b65",
-    "bytes": 3880158,
+    "sha256": "8266b7c23677059888db72945749896fc0f8fb95e845cf4d72193d19de97bbb3",
+    "bytes": 3872457,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
@@ -141,16 +153,20 @@
       }
     ],
     "transformations": "Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval. Final 137 missing handeye frames shown as an explicit text card, never frozen or generated camera footage.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "control_label": "SmolVLA model deployment",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "checkpoint_identifier": "050000 (recording directory)",
     "missing_handeye_frames": 137,
     "encoding": {
       "codec": "libx264",
       "crf": 19,
       "fps": 30
     },
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_sha256": null,
     "decoded_frames": 563,
     "fps": "30",
     "width": 1280,
@@ -159,8 +175,8 @@
   },
   {
     "asset": "media/so101/deployment-trial06-two-view.gif",
-    "sha256": "60572596e50973e505f81889e56ac9dbc25f25eabc20fc9f20523c25c7601a2f",
-    "bytes": 9036100,
+    "sha256": "006e4f746b673014e878253f727cecafe2d9447991b88e468f2f2c667e38e61f",
+    "bytes": 8845579,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
@@ -184,10 +200,10 @@
       }
     ],
     "transformations": "768x360 / 10 FPS preview of the labeled full-interval two-view MP4; 1x. Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval. Final 137 missing handeye frames shown as an explicit text card, never frozen or generated camera footage.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "control_label": "SmolVLA model deployment",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "checkpoint_identifier": "050000 (recording directory)",
     "missing_handeye_frames": 137,
     "ffmpeg_output_arguments": [
       "-filter_complex",
@@ -195,6 +211,10 @@
       "-loop",
       "0"
     ],
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_sha256": null,
     "decoded_frames": 188,
     "fps": "10",
     "width": 768,
@@ -203,8 +223,8 @@
   },
   {
     "asset": "media/so101/deployment-trial04-two-view.mp4",
-    "sha256": "eb8950b5bceed53a938db0496a2e2a3648cfe76eec4ac0b3244f719c179c459a",
-    "bytes": 3096442,
+    "sha256": "e838b8611a0c7a4d553437f8a4b49d302dabb700ac95460014c7636c966d0fe3",
+    "bytes": 3090155,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
@@ -228,16 +248,20 @@
       }
     ],
     "transformations": "Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified; human cable handling and reset retained",
+    "control_label": "SmolVLA model deployment; human cable handling and reset retained",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "checkpoint_identifier": "050000 (recording directory)",
     "missing_handeye_frames": 0,
     "encoding": {
       "codec": "libx264",
       "crf": 19,
       "fps": 30
     },
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_sha256": null,
     "decoded_frames": 379,
     "fps": "30",
     "width": 1280,
@@ -246,8 +270,8 @@
   },
   {
     "asset": "media/so101/deployment-trial04-two-view.gif",
-    "sha256": "3d14a345dbd996598e48d876e2763035d2646eeb8f071e1220387777e9055a11",
-    "bytes": 7113640,
+    "sha256": "8461daa28bf54985d4ba11aaa1e28e83195efa8a0e62d7ce82d965df02869e12",
+    "bytes": 7120025,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial04/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
@@ -271,10 +295,10 @@
       }
     ],
     "transformations": "768x360 / 10 FPS preview of the labeled full-interval two-view MP4; 1x. Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified; human cable handling and reset retained",
+    "control_label": "SmolVLA model deployment; human cable handling and reset retained",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "checkpoint_identifier": "050000 (recording directory)",
     "missing_handeye_frames": 0,
     "ffmpeg_output_arguments": [
       "-filter_complex",
@@ -282,6 +306,10 @@
       "-loop",
       "0"
     ],
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_sha256": null,
     "decoded_frames": 126,
     "fps": "10",
     "width": 768,
@@ -377,8 +405,8 @@
   },
   {
     "asset": "media/so101/deployment-trial03-two-view.mp4",
-    "sha256": "aff751a64264089966048534ed7103e294d06230248c18f4957f4221aa76b57c",
-    "bytes": 2955657,
+    "sha256": "6051617f038fd9800469b469080ac0c81aee05f17d9a7d415dbf0759d7bd2b63",
+    "bytes": 2952800,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
@@ -402,16 +430,20 @@
       }
     ],
     "transformations": "Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified; failure observation, human hand at end",
+    "control_label": "SmolVLA model deployment; failure observation, human hand at end",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "checkpoint_identifier": "050000 (recording directory)",
     "missing_handeye_frames": 0,
     "encoding": {
       "codec": "libx264",
       "crf": 19,
       "fps": 30
     },
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_sha256": null,
     "decoded_frames": 367,
     "fps": "30",
     "width": 1280,
@@ -420,8 +452,8 @@
   },
   {
     "asset": "media/so101/deployment-trial03-two-view.gif",
-    "sha256": "24ad39052b62fa2fba73e7b2af45b09b0187bf616fc2423fb27534ad6e9faf66",
-    "bytes": 6953430,
+    "sha256": "87703daea4b2d27ccde9b64274a0190e59ee3a6bed9fd3dc1bfc79fbfa39d0d6",
+    "bytes": 7005485,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial03/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
@@ -445,10 +477,10 @@
       }
     ],
     "transformations": "768x360 / 10 FPS preview of the labeled full-interval two-view MP4; 1x. Native 640x480 views arranged left=fixed, right=handeye; labels added outside camera images; frame-index alignment from the same dataset episode, no exposure-sync claim; entire fixed-camera interval.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified; failure observation, human hand at end",
+    "control_label": "SmolVLA model deployment; failure observation, human hand at end",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "050000 in source directory name; controller/hash not recorded",
+    "checkpoint_identifier": "050000 (recording directory)",
     "missing_handeye_frames": 0,
     "ffmpeg_output_arguments": [
       "-filter_complex",
@@ -456,6 +488,10 @@
       "-loop",
       "0"
     ],
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_sha256": null,
     "decoded_frames": 122,
     "fps": "10",
     "width": 768,
@@ -464,8 +500,8 @@
   },
   {
     "asset": "media/so101/task-sequence.webp",
-    "sha256": "826ef0aa723ded656380e1592e32d169d6ed932a5a83b6d5c6cecadc76bdeed2",
-    "bytes": 46970,
+    "sha256": "f8c1cb6ec850872b14a40eaf18566856be4d424f8c9e4da800fc3a625cbc0220",
+    "bytes": 46012,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial06/videos/chunk-000/observation.images.fixed/episode_000000.mp4",
@@ -479,7 +515,7 @@
       }
     ],
     "transformations": "Four selected source frames resized for a storyboard; no retouching or synthesized views.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "control_label": "SmolVLA model deployment",
     "playback_speed": 1,
     "time_cuts": true,
     "selected_source_frame_indices": [
@@ -487,7 +523,12 @@
       321,
       401,
       482
-    ]
+    ],
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null
   },
   {
     "asset": "media/so101/camera-inputs.webp",
@@ -526,8 +567,8 @@
   },
   {
     "asset": "media/so101/deployment-trial06-telemetry.mp4",
-    "sha256": "150e3c8409761c97e5f00994714f75748294337c9372015966bac2d787662adb",
-    "bytes": 2942024,
+    "sha256": "3e0088546f1a058da46617564d2d1f2cdcd726b67f4b9f3c6ecc7d5acba81b60",
+    "bytes": 2942402,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial06/data/chunk-000/episode_000000.parquet",
@@ -561,10 +602,14 @@
       }
     ],
     "transformations": "Minimal light layout with real camera playback and six measured/sent-position histories; one measured value per joint; source details in companion docs; no future trace revealed. Entire recorded interval; missing wrist interval replaced by an explicit card.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "control_label": "SmolVLA model deployment",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "Unverified; 050000 in directory name, no controller or checkpoint hash.",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null,
     "telemetry": "results/so101/telemetry/trial06.csv",
     "alignment": {
       "rows": 563,
@@ -596,8 +641,8 @@
   },
   {
     "asset": "media/so101/deployment-trial06-telemetry.gif",
-    "sha256": "83dbe39cfc7a9c4860aa0cc9b07697619577cacf0b68674389d6ac852dc84366",
-    "bytes": 7768749,
+    "sha256": "bb2bcca6b7eaf00b2de99b70a84b61f488f44856656a66a3b45c0b6fcd67d5bf",
+    "bytes": 7790721,
     "sources": [
       {
         "dataset_relative_path": "eval_medicine_box_black_050000_trial06/data/chunk-000/episode_000000.parquet",
@@ -631,10 +676,14 @@
       }
     ],
     "transformations": "Minimal light layout with real camera playback and six measured/sent-position histories; one measured value per joint; source details in companion docs; no future trace revealed. Entire recorded interval; missing wrist interval replaced by an explicit card.",
-    "control_label": "Deployment recording; model identity and autonomous-control provenance unverified",
+    "control_label": "SmolVLA model deployment",
+    "policy_type": "smolvla",
+    "control_mode": "model_inference",
+    "policy_identity_source": "maintainer_confirmation",
     "playback_speed": 1,
     "time_cuts": false,
-    "checkpoint_identifier": "Unverified; 050000 in directory name, no controller or checkpoint hash.",
+    "checkpoint_identifier": "050000 (recording directory)",
+    "checkpoint_sha256": null,
     "telemetry": "results/so101/telemetry/trial06.csv",
     "alignment": {
       "rows": 563,

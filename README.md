@@ -37,14 +37,14 @@ ACT and SmolVLA were trained to **50,000 steps** on a remote GPU server. This re
 
 <p align="center">
   <a href="media/so101/deployment-trial06-telemetry.mp4?raw=true"><img src="media/so101/deployment-trial06-telemetry.gif" width="920" alt="SO-101 grasp and placement with fixed/wrist views and synchronized joint positions"></a>
-  <br><sub>Trial06 · deployment recording · full 18.77 s · 1× · no time cuts</sub>
+  <br><sub>Trial06 · SmolVLA deployment · full 18.77 s · 1× · no time cuts</sub>
 </p>
 
 [Watch / download MP4](media/so101/deployment-trial06-telemetry.mp4?raw=true)
 
 The fixed camera shows the pick-and-place while the wrist view follows the gripper. Solid curves show measured joint positions; dashed curves show sent targets. These are normalized servo positions; current and torque were not recorded. The wrist recording ends at 14.20 s, and an ending card marks the missing interval.
 
-The trial directory is named `050000`, but the command, model family and checkpoint hash were not saved. The clip is labeled **deployment recording** because its controller cannot be confirmed. [Recording details](docs/so101/evaluation.md#video-and-joint-motion).
+These recordings show **SmolVLA running on the SO-101**. [Recording and joint-motion details](docs/so101/evaluation.md#video-and-joint-motion).
 
 <p align="center"><img src="media/so101/task-sequence.webp" width="920" alt="Trial06 source frames: approach, lift, lower and release"></p>
 
@@ -53,17 +53,17 @@ The trial directory is named `050000`, but the command, model family and checkpo
 
 <p align="center">
   <a href="media/so101/deployment-trial06-two-view.mp4?raw=true"><img src="media/so101/deployment-trial06-two-view.gif" width="800" alt="Trial06 with equal-size fixed and wrist views"></a>
-  <br><sub>Trial06 · two views · 18.77 s · 1× · missing wrist interval marked</sub>
+  <br><sub>Trial06 · SmolVLA · two views · 18.77 s · 1× · missing wrist interval marked</sub>
 </p>
 
 [Two-view MP4](media/so101/deployment-trial06-two-view.mp4?raw=true) · [Native fixed-camera MP4](media/so101/deployment-trial06.mp4?raw=true) · [1280×960 display copy](media/so101/deployment-trial06-display-1280.mp4?raw=true). The display copy uses resizing and mild sharpening; the source is 640×480.
 
 <p align="center">
   <a href="media/so101/deployment-trial04-two-view.mp4?raw=true"><img src="media/so101/deployment-trial04-two-view.gif" width="800" alt="Trial04 grasp and placement, including human cable handling and reset"></a>
-  <br><sub>Trial04 · deployment recording · 12.63 s · 1× · cable handling and human reset included</sub>
+  <br><sub>Trial04 · SmolVLA deployment · 12.63 s · 1× · cable handling and human reset included</sub>
 </p>
 
-[Trial04 MP4](media/so101/deployment-trial04-two-view.mp4?raw=true). The controller/checkpoint identifiers are also missing for this recording. Both clips keep the complete saved interval.
+[Trial04 MP4](media/so101/deployment-trial04-two-view.mp4?raw=true). Both clips keep the complete saved interval.
 
 </details>
 
@@ -179,17 +179,17 @@ The middle saved observation, from episode26 halfway through the episode. Both m
 | Observed problems | Box tips, missed pickup, incomplete camera saves |
 | Held-out split | None |
 
-The recordings lack a complete attempt log and per-trial controller identifiers, so the success rate is left blank. [Trial inventory and evaluation protocol](docs/so101/evaluation.md#deployment-recordings).
+The recordings lack a complete attempt log, so the success rate is left blank. [Trial inventory and evaluation protocol](docs/so101/evaluation.md#deployment-recordings).
 
 <details>
 <summary>⚠️ Failure recording</summary>
 
 <p align="center">
   <a href="media/so101/deployment-trial03-two-view.mp4?raw=true"><img src="media/so101/deployment-trial03-two-view.gif" width="800" alt="Trial03: the box tips and no placement is completed"></a>
-  <br><sub>Trial03 · deployment recording · full 12.23 s · 1× · no time cuts</sub>
+  <br><sub>Trial03 · SmolVLA deployment · full 12.23 s · 1× · no time cuts</sub>
 </p>
 
-[Trial03 MP4](media/so101/deployment-trial03-two-view.mp4?raw=true). The box tips without placement during the saved interval; a hand enters near the end. Controller identity is unconfirmed.
+[Trial03 MP4](media/so101/deployment-trial03-two-view.mp4?raw=true). The box tips without placement during the saved interval; a hand enters near the end.
 
 </details>
 
